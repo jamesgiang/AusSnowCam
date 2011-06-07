@@ -71,6 +71,11 @@ public class Main extends Activity {
 			        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 			        spnCamSelect.setAdapter(adapter);
 			        app_title = app_title + " - " + getString(R.string.fallscreek);
+				} else if(Utils.ReadSettings(Main.this, "selected_resort").equalsIgnoreCase("4")){
+					ArrayAdapter<?> adapter = ArrayAdapter.createFromResource(this, R.array.bawbaw, android.R.layout.simple_spinner_item);
+			        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+			        spnCamSelect.setAdapter(adapter);
+			        app_title = app_title + " - " + getString(R.string.bawbaw);
 				}
 				
 			} catch (IOException e) {
@@ -185,6 +190,30 @@ public class Main extends Activity {
 			                	webview.loadData("<html><body><b>" + getString(R.string.nocam) + "</b></body></html>", "text/html", "utf-8");
 						}
 						break;
+					case 4:
+						switch(pos) {
+			                case 0:
+			                	webview.loadUrl("http://www.mountbawbaw.com.au/images/snowcams/camera3.jpg");
+			                	break;
+			                case 1:
+			                	 webview.loadUrl("http://www.mountbawbaw.com.au/images/snowcams/camera2.jpg");
+			                	break;
+			                case 2:
+			                	 webview.loadUrl("http://www.mountbawbaw.com.au/images/snowcams/camera1.jpg");
+			                	break;
+			                case 3:
+			                	 webview.loadUrl("http://www.mountbawbaw.com.au/images/snowcams/camera4.jpg");
+			                	break;
+			                case 4:
+			                	 webview.loadUrl("http://www.mountbawbaw.com.au/images/snowcams/camera5.jpg");
+			                	break;
+			                case 5:
+			                	webview.loadUrl("http://www.mountbawbaw.com.au/images/snowcams/camera6.jpg");
+			                	break;
+			                default:
+			                	webview.loadData("<html><body><b>" + getString(R.string.nocam) + "</b></body></html>", "text/html", "utf-8");
+						}
+						break;
 	                default:
 	                	webview.loadData("<html><body><b>" + getString(R.string.noresort) + "</b></body></html>", "text/html", "utf-8");
             	}
@@ -247,6 +276,16 @@ public class Main extends Activity {
 						        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 						        spnCamSelect.setAdapter(adapter);
 						        app_title = app_title + " - " + getString(R.string.fallscreek);
+							} catch (IOException e) {
+								e.printStackTrace();
+							}
+						} else if(which==3) {
+							try {
+								Utils.WriteSettings(Main.this, "4", "selected_resort");
+								ArrayAdapter<?> adapter = ArrayAdapter.createFromResource(Main.this, R.array.bawbaw, android.R.layout.simple_spinner_item);
+						        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+						        spnCamSelect.setAdapter(adapter);
+						        app_title = app_title + " - " + getString(R.string.bawbaw);
 							} catch (IOException e) {
 								e.printStackTrace();
 							}
