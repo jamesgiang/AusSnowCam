@@ -6,6 +6,7 @@
         <item>Falls Creek</item>
         <item>Mt Baw Baw</item>
         <item>Perisher</item>
+        <item>Thredbo</item>
     </array> 
     <string-array name="mtbuller">
         <item>Bourke Street</item>
@@ -48,5 +49,14 @@
         <item>The Ridge</item>
         <item>Guthega</item>
         <item>Tube Town</item>
+    </string-array>  
+    <string-array name="thredbo">
+        <item>Basin</item>
+        <item>Mountain</item>
+        <item>Alpine Way</item>
+        <item>Kosciuszko Express</item>
+        <item>Central Spur</item>
+        <item>Cruiser</item>
+        <item>Friday Flat</item>
     </string-array>  
 </resources>
