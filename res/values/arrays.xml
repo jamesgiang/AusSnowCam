@@ -4,6 +4,7 @@
         <item>Mt Buller</item>
         <item>Mt Hotham</item>
         <item>Falls Creek</item>
+        <item>Mt Baw Baw</item>
     </array> 
     <string-array name="mtbuller">
         <item>Bourke Street</item>
@@ -27,5 +28,13 @@
         <item>Slalom Plaza</item>
         <item>Summit Run</item>
         <item>Tube Park</item>
+    </string-array>
+    <string-array name="bawbaw">
+        <item>Bowl</item>
+        <item>Summit</item>
+        <item>Toboggan Park</item>
+        <item>Central Park</item>
+        <item>Village</item>
+        <item>Cactus Rail</item>
     </string-array>   
 </resources>
