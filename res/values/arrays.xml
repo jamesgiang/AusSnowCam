@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<array name="resort_options">
+        <item>Mt Buller</item>
+        <item>Mt Hotham</item>
+        <item>Falls Creek</item>
+    </array> 
+    <string-array name="mtbuller">
+        <item>Bourke Street</item>
+        <item>Boggy Creek</item>
+        <item>Summit</item>
+        <item>Village</item>
+        <item>Toboggan Run</item>
+    </string-array>   
+    <string-array name="mthotham">
+        <item>Snake Gully</item>
+        <item>Big D</item>
+        <item>Hotham Heights</item>
+        <item>Heavenly Valley</item>
+        <item>Dinner Plain</item>
+    </string-array>   
+    <string-array name="fallscreek">
+        <item>Cloud Nine</item>
+        <item>Drovers Dream</item>
+        <item>Main Street and Towers Chair</item>
+        <item>Ruined Castle</item>
+        <item>Slalom Plaza</item>
+        <item>Summit Run</item>
+        <item>Tube Park</item>
+    </string-array>   
+</resources>

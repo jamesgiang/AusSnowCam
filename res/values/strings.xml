@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AusSnowCam</string>
+    <string name="mtbuller">Mt Buller</string>
+    <string name="mthotham">Mt Hotham</string>
+    <string name="fallscreek">Falls Creek</string>
+    <string name="menu1">Set Resort</string>
+    <string name="menu2">Refresh</string>
+    <string name="menu3">About</string>
+    <string name="close">Close</string>
+    <string name="loading">Loading snowcam...</string>
+    <string name="snowcam_prompt">Select a snowcam</string>
+    <string name="changeresort">Change Resorts</string>
+    <string name="nocam">Please select a snow cam</string>
+    <string name="noresort">Please select a resort</string>
+    <string name="about_info">See what\&apos;s happening at mountains across Australia from your phone with ease!\n\nDeveloped by James Giang\nwww.jamesgiang.com</string>
+</resources>
