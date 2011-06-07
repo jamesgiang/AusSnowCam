@@ -5,6 +5,7 @@
         <item>Mt Hotham</item>
         <item>Falls Creek</item>
         <item>Mt Baw Baw</item>
+        <item>Perisher</item>
     </array> 
     <string-array name="mtbuller">
         <item>Bourke Street</item>
@@ -37,4 +38,15 @@
         <item>Village</item>
         <item>Cactus Rail</item>
     </string-array>   
+    <string-array name="perisher">
+        <item>Village Eight</item>
+        <item>Front Valley</item>
+        <item>North Perisher</item>
+        <item>Mt. Perisher</item>
+        <item>Blue Cow</item>
+        <item>Smiggin Holes</item>
+        <item>The Ridge</item>
+        <item>Guthega</item>
+        <item>Tube Town</item>
+    </string-array>  
 </resources>

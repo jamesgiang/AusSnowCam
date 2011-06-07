@@ -76,8 +76,12 @@ public class Main extends Activity {
 			        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 			        spnCamSelect.setAdapter(adapter);
 			        app_title = app_title + " - " + getString(R.string.bawbaw);
+				} else if(Utils.ReadSettings(Main.this, "selected_resort").equalsIgnoreCase("5")){
+					ArrayAdapter<?> adapter = ArrayAdapter.createFromResource(this, R.array.perisher, android.R.layout.simple_spinner_item);
+			        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+			        spnCamSelect.setAdapter(adapter);
+			        app_title = app_title + " - " + getString(R.string.perisher);
 				}
-				
 			} catch (IOException e) {
 				Toast.makeText(getApplicationContext(), "Please select a resort first", Toast.LENGTH_SHORT).show();
 			}
@@ -214,6 +218,39 @@ public class Main extends Activity {
 			                	webview.loadData("<html><body><b>" + getString(R.string.nocam) + "</b></body></html>", "text/html", "utf-8");
 						}
 						break;
+					case 5:
+						switch(pos) {
+			                case 0:
+			                	webview.loadUrl("http://perisher.com.au/images/snowcams/Xv8.jpg");
+			                	break;
+			                case 1:
+			                	 webview.loadUrl("http://perisher.com.au/images/snowcams/Xfront.jpg");
+			                	break;
+			                case 2:
+			                	 webview.loadUrl("http://perisher.com.au/images/snowcams/xnorthp.jpg");
+			                	break;
+			                case 3:
+			                	 webview.loadUrl("http://perisher.com.au/images/snowcams/Xmtp.jpg");
+			                	break;
+			                case 4:
+			                	 webview.loadUrl("http://perisher.com.au/images/snowcams/Xbluecow.jpg");
+			                	break;
+			                case 5:
+			                	webview.loadUrl("http://perisher.com.au/images/snowcams/Xsmiggin.jpg");
+			                	break;
+			                case 6:
+			                	webview.loadUrl("http://perisher.com.au/images/snowcams/Xridge.jpg");
+			                	break;
+			                case 7:
+			                	webview.loadUrl("http://perisher.com.au/images/snowcams/Xcowt.jpg");
+			                	break;
+			                case 8:
+			                	webview.loadUrl("http://perisher.com.au/images/snowcams/Xtube.jpg");
+			                	break;
+			                default:
+			                	webview.loadData("<html><body><b>" + getString(R.string.nocam) + "</b></body></html>", "text/html", "utf-8");
+						}
+						break;
 	                default:
 	                	webview.loadData("<html><body><b>" + getString(R.string.noresort) + "</b></body></html>", "text/html", "utf-8");
             	}
@@ -286,6 +323,16 @@ public class Main extends Activity {
 						        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 						        spnCamSelect.setAdapter(adapter);
 						        app_title = app_title + " - " + getString(R.string.bawbaw);
+							} catch (IOException e) {
+								e.printStackTrace();
+							}
+						} else if(which==4) {
+							try {
+								Utils.WriteSettings(Main.this, "5", "selected_resort");
+								ArrayAdapter<?> adapter = ArrayAdapter.createFromResource(Main.this, R.array.perisher, android.R.layout.simple_spinner_item);
+						        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+						        spnCamSelect.setAdapter(adapter);
+						        app_title = app_title + " - " + getString(R.string.perisher);
 							} catch (IOException e) {
 								e.printStackTrace();
 							}
