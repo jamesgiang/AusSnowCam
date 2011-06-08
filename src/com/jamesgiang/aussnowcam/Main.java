@@ -1,3 +1,25 @@
+/**
+ * AusSnowCam: View snowcams from Australia's snow resorts
+ * File: Main.java
+ *
+ * @author James Giang
+ *
+ * Copyright 2011 James Giang
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ */
+
 package com.jamesgiang.aussnowcam;
 
 import java.io.IOException;
@@ -71,8 +93,22 @@ public class Main extends Activity {
 			        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 			        spnCamSelect.setAdapter(adapter);
 			        app_title = app_title + " - " + getString(R.string.fallscreek);
+				} else if(Utils.ReadSettings(Main.this, "selected_resort").equalsIgnoreCase("4")){
+					ArrayAdapter<?> adapter = ArrayAdapter.createFromResource(this, R.array.bawbaw, android.R.layout.simple_spinner_item);
+			        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+			        spnCamSelect.setAdapter(adapter);
+			        app_title = app_title + " - " + getString(R.string.bawbaw);
+				} else if(Utils.ReadSettings(Main.this, "selected_resort").equalsIgnoreCase("5")){
+					ArrayAdapter<?> adapter = ArrayAdapter.createFromResource(this, R.array.perisher, android.R.layout.simple_spinner_item);
+			        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+			        spnCamSelect.setAdapter(adapter);
+			        app_title = app_title + " - " + getString(R.string.perisher);
+				} else if(Utils.ReadSettings(Main.this, "selected_resort").equalsIgnoreCase("6")){
+					ArrayAdapter<?> adapter = ArrayAdapter.createFromResource(this, R.array.thredbo, android.R.layout.simple_spinner_item);
+			        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+			        spnCamSelect.setAdapter(adapter);
+			        app_title = app_title + " - " + getString(R.string.thredbo);
 				}
-				
 			} catch (IOException e) {
 				Toast.makeText(getApplicationContext(), "Please select a resort first", Toast.LENGTH_SHORT).show();
 			}
@@ -185,6 +221,90 @@ public class Main extends Activity {
 			                	webview.loadData("<html><body><b>" + getString(R.string.nocam) + "</b></body></html>", "text/html", "utf-8");
 						}
 						break;
+					case 4:
+						switch(pos) {
+			                case 0:
+			                	webview.loadUrl("http://www.mountbawbaw.com.au/images/snowcams/camera3.jpg");
+			                	break;
+			                case 1:
+			                	 webview.loadUrl("http://www.mountbawbaw.com.au/images/snowcams/camera2.jpg");
+			                	break;
+			                case 2:
+			                	 webview.loadUrl("http://www.mountbawbaw.com.au/images/snowcams/camera1.jpg");
+			                	break;
+			                case 3:
+			                	 webview.loadUrl("http://www.mountbawbaw.com.au/images/snowcams/camera4.jpg");
+			                	break;
+			                case 4:
+			                	 webview.loadUrl("http://www.mountbawbaw.com.au/images/snowcams/camera5.jpg");
+			                	break;
+			                case 5:
+			                	webview.loadUrl("http://www.mountbawbaw.com.au/images/snowcams/camera6.jpg");
+			                	break;
+			                default:
+			                	webview.loadData("<html><body><b>" + getString(R.string.nocam) + "</b></body></html>", "text/html", "utf-8");
+						}
+						break;
+					case 5:
+						switch(pos) {
+			                case 0:
+			                	webview.loadUrl("http://perisher.com.au/images/snowcams/Xv8.jpg");
+			                	break;
+			                case 1:
+			                	 webview.loadUrl("http://perisher.com.au/images/snowcams/Xfront.jpg");
+			                	break;
+			                case 2:
+			                	 webview.loadUrl("http://perisher.com.au/images/snowcams/xnorthp.jpg");
+			                	break;
+			                case 3:
+			                	 webview.loadUrl("http://perisher.com.au/images/snowcams/Xmtp.jpg");
+			                	break;
+			                case 4:
+			                	 webview.loadUrl("http://perisher.com.au/images/snowcams/Xbluecow.jpg");
+			                	break;
+			                case 5:
+			                	webview.loadUrl("http://perisher.com.au/images/snowcams/Xsmiggin.jpg");
+			                	break;
+			                case 6:
+			                	webview.loadUrl("http://perisher.com.au/images/snowcams/Xridge.jpg");
+			                	break;
+			                case 7:
+			                	webview.loadUrl("http://perisher.com.au/images/snowcams/Xcowt.jpg");
+			                	break;
+			                case 8:
+			                	webview.loadUrl("http://perisher.com.au/images/snowcams/Xtube.jpg");
+			                	break;
+			                default:
+			                	webview.loadData("<html><body><b>" + getString(R.string.nocam) + "</b></body></html>", "text/html", "utf-8");
+						}
+						break;
+					case 6:
+						switch(pos) {
+			                case 0:
+			                	webview.loadUrl("http://www.thredbo.com.au/liveimages/Basin01.jpg");
+			                	break;
+			                case 1:
+			                	 webview.loadUrl("http://www.thredbo.com.au/liveimages/EaglesNest01.jpg");
+			                	break;
+			                case 2:
+			                	 webview.loadUrl("http://www.thredbo.com.au/liveimages/AlpineWay01.jpg");
+			                	break;
+			                case 3:
+			                	 webview.loadUrl("http://www.thredbo.com.au/liveimages/KosciuszkoExpress01.jpg");
+			                	break;
+			                case 4:
+			                	 webview.loadUrl("http://www.thredbo.com.au/liveimages/AlpineWay02.jpg");
+			                	break;
+			                case 5:
+			                	webview.loadUrl("http://www.thredbo.com.au/liveimages/Cruiser01.jpg");
+			                	break;
+			                case 6:
+			                	webview.loadUrl("http://www.thredbo.com.au/liveimages/FridayFlat01.jpg");
+			                	break;
+			                default:
+			                	webview.loadData("<html><body><b>" + getString(R.string.nocam) + "</b></body></html>", "text/html", "utf-8");
+						}
+						break;
 	                default:
 	                	webview.loadData("<html><body><b>" + getString(R.string.noresort) + "</b></body></html>", "text/html", "utf-8");
             	}
@@ -247,6 +367,36 @@ public class Main extends Activity {
 						        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 						        spnCamSelect.setAdapter(adapter);
 						        app_title = app_title + " - " + getString(R.string.fallscreek);
+							} catch (IOException e) {
+								e.printStackTrace();
+							}
+						} else if(which==3) {
+							try {
+								Utils.WriteSettings(Main.this, "4", "selected_resort");
+								ArrayAdapter<?> adapter = ArrayAdapter.createFromResource(Main.this, R.array.bawbaw, android.R.layout.simple_spinner_item);
+						        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+						        spnCamSelect.setAdapter(adapter);
+						        app_title = app_title + " - " + getString(R.string.bawbaw);
+							} catch (IOException e) {
+								e.printStackTrace();
+							}
+						} else if(which==4) {
+							try {
+								Utils.WriteSettings(Main.this, "5", "selected_resort");
+								ArrayAdapter<?> adapter = ArrayAdapter.createFromResource(Main.this, R.array.perisher, android.R.layout.simple_spinner_item);
+						        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+						        spnCamSelect.setAdapter(adapter);
+						        app_title = app_title + " - " + getString(R.string.perisher);
+							} catch (IOException e) {
+								e.printStackTrace();
+							}
+						} else if(which==5) {
+							try {
+								Utils.WriteSettings(Main.this, "6", "selected_resort");
+								ArrayAdapter<?> adapter = ArrayAdapter.createFromResource(Main.this, R.array.thredbo, android.R.layout.simple_spinner_item);
+						        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+						        spnCamSelect.setAdapter(adapter);
+						        app_title = app_title + " - " + getString(R.string.thredbo);
 							} catch (IOException e) {
 								e.printStackTrace();
 							}
