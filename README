@@ -1,16 +1,51 @@
+----------
+WHAT IS AUSSNOWCAM?
+----------
 See what's happening at mountains across Australia from your phone with ease!
 AusSnowCam provides you with a simple interface to quickly browse snow cams of various snow resorts in Australia.
 
 Currently supports the following resorts
+
+Victoria
 -Mt Buller
 -Mt Hotham
 -Falls Creek
+-Mt Baw Baw
 
-This app is not affiliated with Mt Buller, Mt Hotham or Falls Creek. All images are copyright to their respective owners.
+New South Wales
+-Thredbo
+-Perisher
 
-Version 1.0
+This app is not affiliated with any of the above mentioned snow resorts. All images are copyright to their respective owners.
+
+----------
+VERSION HISTORY (CHANGELOG)
+----------
+v1.0
 -Initial release
 -Supports Mt Buller, Mt Hotham and Falls Creek
 
-Version 1.1
--Small screen support
+v1.1
+-Added Small screen support
+
+v2.0
+-Added support for Mt Baw Baw, Thredbo and Perisher
+-AusSnowCam now licensed under Apache License Version 2.0
+Source available on GitHub https://github.com/jamesgiang/AusSnowCam 
+
+----------
+LICENSE
+----------
+Copyright 2011 James Giang
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
