@@ -31,12 +31,17 @@
     <LinearLayout android:id="@+id/header"
     	android:orientation="vertical"
     	android:layout_width="fill_parent"
-    	android:layout_height="wrap_content"
-    	android:layout_margin="5dip"
-    	android:gravity="center_vertical">
+    	android:layout_height="wrap_content">
+    	<com.google.ads.AdView android:id="@+id/adView"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			ads:adUnitId="a14dee1ce46976e"
+			ads:adSize="BANNER"
+			ads:loadAdOnCreate="true" />
 		<Spinner android:id="@+id/spnCamSelect"
    			android:layout_width="fill_parent"
-   			android:layout_height="wrap_content" 
+   			android:layout_height="wrap_content"
+   			android:layout_margin="5dip"
    			android:prompt="@string/snowcam_prompt">
    		</Spinner>
 	</LinearLayout>

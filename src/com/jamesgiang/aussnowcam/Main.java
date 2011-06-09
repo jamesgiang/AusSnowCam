@@ -30,7 +30,6 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -86,9 +85,7 @@ public class Main extends Activity {
         setContentView(R.layout.main);
         webview = (WebView) findViewById(R.id.webview);
         spnCamSelect = (Spinner) findViewById(R.id.spnCamSelect);
-        AdView adView = new AdView(this, AdSize.BANNER, "a14dee1ce46976e");
-        LinearLayout layout = (LinearLayout)findViewById(R.id.header);
-        layout.addView(adView);
+        AdView adView = (AdView) findViewById(R.id.adView);
         adView.loadAd(new AdRequest());
         if(Utils.CheckSetting(this, "selected_resort")) {
         	try {
