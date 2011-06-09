@@ -108,6 +108,16 @@ public class Main extends Activity {
 			        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 			        spnCamSelect.setAdapter(adapter);
 			        app_title = app_title + " - " + getString(R.string.thredbo);
+				} else if(Utils.ReadSettings(Main.this, "selected_resort").equalsIgnoreCase("7")){
+					ArrayAdapter<?> adapter = ArrayAdapter.createFromResource(this, R.array.selwyn, android.R.layout.simple_spinner_item);
+			        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+			        spnCamSelect.setAdapter(adapter);
+			        app_title = app_title + " - " + getString(R.string.selwyn);
+				} else if(Utils.ReadSettings(Main.this, "selected_resort").equalsIgnoreCase("8")){
+					ArrayAdapter<?> adapter = ArrayAdapter.createFromResource(this, R.array.charlotte, android.R.layout.simple_spinner_item);
+			        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+			        spnCamSelect.setAdapter(adapter);
+			        app_title = app_title + " - " + getString(R.string.charlotte);
 				}
 			} catch (IOException e) {
 				Toast.makeText(getApplicationContext(), "Please select a resort first", Toast.LENGTH_SHORT).show();
@@ -305,6 +315,39 @@ public class Main extends Activity {
 			                	webview.loadData("<html><body><b>" + getString(R.string.nocam) + "</b></body></html>", "text/html", "utf-8");
 						}
 						break;
+					case 7:
+						switch(pos) {
+			                case 0:
+			                	webview.loadUrl("http://selwynsnowcams.com/view/images/camera_01_latest/c01_left_000M.jpg");
+			                	break;
+			                case 1:
+			                	 webview.loadUrl("http://selwynsnowcams.com/view/images/camera_01_latest/c01_right_000M.jpg");
+			                	break;
+			                case 2:
+			                	 webview.loadUrl("http://selwynsnowcams.com/view/images/camera_02_latest/c02_left_000M.jpg");
+			                	break;
+			                case 3:
+			                	 webview.loadUrl("http://selwynsnowcams.com/view/images/camera_02_latest/c02_right_000M.jpg");
+			                	break;
+			                case 4:
+			                	 webview.loadUrl("http://selwynsnowcams.com/view/images/camera_03_latest/c03_000M.jpg");
+			                	break;
+			                default:
+			                	webview.loadData("<html><body><b>" + getString(R.string.nocam) + "</b></body></html>", "text/html", "utf-8");
+						}
+						break;
+					case 8:
+						switch(pos) {
+			                case 0:
+			                	webview.loadUrl("http://www.charlottepass.com.au/webcam_th/charlotte1_640_480.jpg");
+			                	break;
+			                case 1:
+			                	 webview.loadUrl("http://www.charlottepass.com.au/webcam_th/charlotte2_640_480.jpg");
+			                	break;
+			                default:
+			                	webview.loadData("<html><body><b>" + getString(R.string.nocam) + "</b></body></html>", "text/html", "utf-8");
+						}
+						break;
 	                default:
 	                	webview.loadData("<html><body><b>" + getString(R.string.noresort) + "</b></body></html>", "text/html", "utf-8");
             	}
@@ -397,6 +440,26 @@ public class Main extends Activity {
 						        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 						        spnCamSelect.setAdapter(adapter);
 						        app_title = app_title + " - " + getString(R.string.thredbo);
+							} catch (IOException e) {
+								e.printStackTrace();
+							}
+						} else if(which==6) {
+							try {
+								Utils.WriteSettings(Main.this, "7", "selected_resort");
+								ArrayAdapter<?> adapter = ArrayAdapter.createFromResource(Main.this, R.array.selwyn, android.R.layout.simple_spinner_item);
+						        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+						        spnCamSelect.setAdapter(adapter);
+						        app_title = app_title + " - " + getString(R.string.selwyn);
+							} catch (IOException e) {
+								e.printStackTrace();
+							}
+						} else if(which==7) {
+							try {
+								Utils.WriteSettings(Main.this, "8", "selected_resort");
+								ArrayAdapter<?> adapter = ArrayAdapter.createFromResource(Main.this, R.array.charlotte, android.R.layout.simple_spinner_item);
+						        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+						        spnCamSelect.setAdapter(adapter);
+						        app_title = app_title + " - " + getString(R.string.charlotte);
 							} catch (IOException e) {
 								e.printStackTrace();
 							}
