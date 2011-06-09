@@ -30,6 +30,8 @@
         <item>Mt Baw Baw</item>
         <item>Perisher</item>
         <item>Thredbo</item>
+		<item>Selwyn Snowfields</item>
+		<item>Charlotte Pass</item>
     </array> 
     <string-array name="mtbuller">
         <item>Bourke Street</item>
@@ -82,4 +84,15 @@
         <item>Cruiser</item>
         <item>Friday Flat</item>
     </string-array>  
+	<string-array name="selwyn">
+        <item>Snowflake Parks</item>
+        <item>New Chum Bowl</item>
+        <item>Terrain Park</item>
+        <item>Township</item>
+        <item>Racecourse</item>
+    </string-array>
+	<string-array name="charlotte">
+        <item>Kangaroo Ridge</item>
+        <item>T-Bar</item>
+    </string-array>
 </resources>
