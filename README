@@ -1,6 +1,8 @@
 ----------
 WHAT IS AUSSNOWCAM?
 ----------
+Craving some snow?
+
 See what's happening at mountains across Australia from your phone with ease!
 AusSnowCam provides you with a simple interface to quickly browse snow cams of various snow resorts in Australia.
 
@@ -15,8 +17,12 @@ Victoria
 New South Wales
 -Thredbo
 -Perisher
+-Selwyn Snowfields
+-Charlotte Pass
 
 This app is not affiliated with any of the above mentioned snow resorts. All images are copyright to their respective owners.
+
+Source code available on GitHub https://github.com/jamesgiang/AusSnowCam 
 
 ----------
 VERSION HISTORY (CHANGELOG)
@@ -31,7 +37,12 @@ v1.1
 v2.0
 -Added support for Mt Baw Baw, Thredbo and Perisher
 -AusSnowCam now licensed under Apache License Version 2.0
-Source available on GitHub https://github.com/jamesgiang/AusSnowCam 
+
+v2.1
+-Added support for Selwyn Snowfields and Charlotte Pass
+-Added Google Analytics tracking
+-Fixed up ad loading issue
+-Retweaked codebase
 
 ----------
 LICENSE
