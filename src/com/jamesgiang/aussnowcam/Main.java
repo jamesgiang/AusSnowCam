@@ -150,20 +150,24 @@ public class Main extends Activity {
 			                	tracker.trackEvent(getString(R.string.mtbuller), "Cam - " + cams[pos], "", 0);
 			                	break;
 			                case 1:
-			                	 webview.loadUrl("http://www.mtbuller.com.au/snowcam/img_3.jpg");
-			                	 tracker.trackEvent(getString(R.string.mtbuller), "Cam - " + cams[pos], "", 0);
+			                	webview.loadUrl("http://www.mtbuller.com.au/snowcam/img_3.jpg");
+			                	tracker.trackEvent(getString(R.string.mtbuller), "Cam - " + cams[pos], "", 0);
 			                	break;
 			                case 2:
-			                	 webview.loadUrl("http://www.mtbuller.com.au/snowcam/img_5.jpg");
-			                	 tracker.trackEvent(getString(R.string.mtbuller), "Cam - " + cams[pos], "", 0);
+			                	webview.loadUrl("http://www.mtbuller.com.au/snowcam/img_5.jpg");
+			                	tracker.trackEvent(getString(R.string.mtbuller), "Cam - " + cams[pos], "", 0);
 			                	break;
 			                case 3:
-			                	 webview.loadUrl("http://www.mtbuller.com.au/snowcam/img_6.jpg");
-			                	 tracker.trackEvent(getString(R.string.mtbuller), "Cam - " + cams[pos], "", 0);
+			                	webview.loadUrl("http://www.mtbuller.com.au/snowcam/img_6.jpg");
+			                	tracker.trackEvent(getString(R.string.mtbuller), "Cam - " + cams[pos], "", 0);
 			                	break;
 			                case 4:
-			                	 webview.loadUrl("http://www.mtbuller.com.au/snowcam/img_7.jpg");
-			                	 tracker.trackEvent(getString(R.string.mtbuller), "Cam - " + cams[pos], "", 0);
+			                	webview.loadUrl("http://www.mtbuller.com.au/snowcam/img_7.jpg");
+			                	tracker.trackEvent(getString(R.string.mtbuller), "Cam - " + cams[pos], "", 0);
+			                	break;
+			                case 5:
+			                	webview.loadUrl("http://www.mtbuller.com.au/snowcam/img_1.jpg");
+			                	tracker.trackEvent(getString(R.string.mtbuller), "Cam - " + cams[pos], "", 0);
 			                	break;
 			                default:
 			                	webview.loadData("<html><body><b>" + getString(R.string.nocam) + "</b></body></html>", "text/html", "utf-8");
