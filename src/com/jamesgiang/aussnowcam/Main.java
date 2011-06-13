@@ -104,6 +104,8 @@ public class Main extends Activity {
 					load_selwyn();
 				} else if(Utils.ReadSettings(Main.this, "selected_resort").equalsIgnoreCase("8")){
 					load_charlotte();
+				} else if(Utils.ReadSettings(Main.this, "selected_resort").equalsIgnoreCase("9")){
+					load_lakemountain();
 				}
 			} catch (IOException e) {
 				Toast.makeText(getApplicationContext(), "Please select a resort first", Toast.LENGTH_SHORT).show();
@@ -150,20 +152,24 @@ public class Main extends Activity {
 			                	tracker.trackEvent(getString(R.string.mtbuller), "Cam - " + cams[pos], "", 0);
 			                	break;
 			                case 1:
-			                	 webview.loadUrl("http://www.mtbuller.com.au/snowcam/img_3.jpg");
-			                	 tracker.trackEvent(getString(R.string.mtbuller), "Cam - " + cams[pos], "", 0);
+			                	webview.loadUrl("http://www.mtbuller.com.au/snowcam/img_3.jpg");
+			                	tracker.trackEvent(getString(R.string.mtbuller), "Cam - " + cams[pos], "", 0);
 			                	break;
 			                case 2:
-			                	 webview.loadUrl("http://www.mtbuller.com.au/snowcam/img_5.jpg");
-			                	 tracker.trackEvent(getString(R.string.mtbuller), "Cam - " + cams[pos], "", 0);
+			                	webview.loadUrl("http://www.mtbuller.com.au/snowcam/img_5.jpg");
+			                	tracker.trackEvent(getString(R.string.mtbuller), "Cam - " + cams[pos], "", 0);
 			                	break;
 			                case 3:
-			                	 webview.loadUrl("http://www.mtbuller.com.au/snowcam/img_6.jpg");
-			                	 tracker.trackEvent(getString(R.string.mtbuller), "Cam - " + cams[pos], "", 0);
+			                	webview.loadUrl("http://www.mtbuller.com.au/snowcam/img_6.jpg");
+			                	tracker.trackEvent(getString(R.string.mtbuller), "Cam - " + cams[pos], "", 0);
 			                	break;
 			                case 4:
-			                	 webview.loadUrl("http://www.mtbuller.com.au/snowcam/img_7.jpg");
-			                	 tracker.trackEvent(getString(R.string.mtbuller), "Cam - " + cams[pos], "", 0);
+			                	webview.loadUrl("http://www.mtbuller.com.au/snowcam/img_7.jpg");
+			                	tracker.trackEvent(getString(R.string.mtbuller), "Cam - " + cams[pos], "", 0);
+			                	break;
+			                case 5:
+			                	webview.loadUrl("http://www.mtbuller.com.au/snowcam/img_1.jpg");
+			                	tracker.trackEvent(getString(R.string.mtbuller), "Cam - " + cams[pos], "", 0);
 			                	break;
 			                default:
 			                	webview.loadData("<html><body><b>" + getString(R.string.nocam) + "</b></body></html>", "text/html", "utf-8");
@@ -382,6 +388,49 @@ public class Main extends Activity {
 			                	tracker.trackEvent(getString(R.string.charlotte), "Cam - Error", "", 0);
 						}
 						break;
+					case 9:
+						switch(pos) {
+							case 0:
+								webview.loadUrl("http://www.murrindindicomputers.com.au/lakemountain/trun.jpg");
+								tracker.trackEvent(getString(R.string.lakemountain), "Cam - " + cams[pos], "", 0);
+								break;
+							case 1:
+								webview.loadUrl("http://www.murrindindicomputers.com.au/lakemountain/village.jpg");
+								tracker.trackEvent(getString(R.string.lakemountain), "Cam - " + cams[pos], "", 0);
+								break;
+							case 2:
+								webview.loadUrl("http://lakemountainresort.com.au/~webcam/1.jpg");
+								tracker.trackEvent(getString(R.string.lakemountain), "Cam - " + cams[pos], "", 0);
+								break;
+							case 3:
+								webview.loadUrl("http://lakemountainresort.com.au/~webcam/2.jpg");
+								tracker.trackEvent(getString(R.string.lakemountain), "Cam - " + cams[pos], "", 0);
+								break;
+							case 4:
+								webview.loadUrl("http://lakemountainresort.com.au/~webcam/3.jpg");
+								tracker.trackEvent(getString(R.string.lakemountain), "Cam - " + cams[pos], "", 0);
+								break;
+							case 5:
+								webview.loadUrl("http://lakemountainresort.com.au/~webcam/4.jpg");
+								tracker.trackEvent(getString(R.string.lakemountain), "Cam - " + cams[pos], "", 0);
+								break;
+							case 6:
+								webview.loadUrl("http://lakemountainresort.com.au/~webcam/5.jpg");
+								tracker.trackEvent(getString(R.string.lakemountain), "Cam - " + cams[pos], "", 0);
+								break;
+							case 7:
+								webview.loadUrl("http://lakemountainresort.com.au/~webcam/6.jpg");
+								tracker.trackEvent(getString(R.string.lakemountain), "Cam - " + cams[pos], "", 0);
+								break;
+							case 8:
+								webview.loadUrl("http://lakemountainresort.com.au/~webcam/7.jpg");
+								tracker.trackEvent(getString(R.string.lakemountain), "Cam - " + cams[pos], "", 0);
+								break;
+							default:
+								webview.loadData("<html><body><b>" + getString(R.string.nocam) + "</b></body></html>", "text/html", "utf-8");
+			                	tracker.trackEvent(getString(R.string.lakemountain), "Cam - Error", "", 0);
+						}
+						break;
 	                default:
 	                	webview.loadData("<html><body><b>" + getString(R.string.noresort) + "</b></body></html>", "text/html", "utf-8");
             	}
@@ -471,6 +520,13 @@ public class Main extends Activity {
 							try {
 								Utils.WriteSettings(Main.this, "8", "selected_resort");
 								load_charlotte();
+							} catch (IOException e) {
+								e.printStackTrace();
+							}
+						} else if(which==8) {
+							try {
+								Utils.WriteSettings(Main.this, "9", "selected_resort");
+								load_lakemountain();
 							} catch (IOException e) {
 								e.printStackTrace();
 							}
@@ -565,5 +621,14 @@ public class Main extends Activity {
         app_title = app_title + " - " + getString(R.string.charlotte);
         cams = getResources().getStringArray(R.array.charlotte);
         tracker.trackEvent(getString(R.string.charlotte), "Load resort", "", 0);
+    }
+    
+    private void load_lakemountain() {
+    	ArrayAdapter<?> adapter = ArrayAdapter.createFromResource(this, R.array.lakemountain, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spnCamSelect.setAdapter(adapter);
+        app_title = app_title + " - " + getString(R.string.lakemountain);
+        cams = getResources().getStringArray(R.array.lakemountain);
+        tracker.trackEvent(getString(R.string.lakemountain), "Load resort", "", 0);
     }
 }

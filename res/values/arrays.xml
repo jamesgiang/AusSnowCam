@@ -32,6 +32,7 @@
         <item>Thredbo</item>
 		<item>Selwyn Snowfields</item>
 		<item>Charlotte Pass</item>
+		<item>Lake Mountain</item>
     </array> 
     <string-array name="mtbuller">
         <item>Bourke Street</item>
@@ -39,6 +40,7 @@
         <item>Summit</item>
         <item>Village</item>
         <item>Toboggan Run</item>
+        <item>Little Buller Spur</item>
     </string-array>   
     <string-array name="mthotham">
         <item>Snake Gully</item>
@@ -94,5 +96,16 @@
 	<string-array name="charlotte">
         <item>Kangaroo Ridge</item>
         <item>T-Bar</item>
+    </string-array>
+    <string-array name="lakemountain">
+    	<item>Village Toboggan Run</item>
+    	<item>Village Car Park</item>
+    	<item>Echo Flat Trail Head</item>
+    	<item>Echo Flat</item>
+    	<item>Helicopter Flat</item>
+    	<item>Woolybutt</item>
+    	<item>The Gap</item>
+    	<item>Panorama</item>
+    	<item>Lake Mountain Roving Cam</item>
     </string-array>
 </resources>
