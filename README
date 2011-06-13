@@ -3,7 +3,7 @@ WHAT IS AUSSNOWCAM?
 ----------
 Craving some snow?
 
-See what's happening at mountains across Australia from your phone with ease!
+See what's happening at snow resorts across Australia from your phone with ease!
 AusSnowCam provides you with a simple interface to quickly browse snow cams of various snow resorts in Australia.
 
 Currently supports the following resorts
@@ -13,6 +13,7 @@ Victoria
 -Mt Hotham
 -Falls Creek
 -Mt Baw Baw
+-Lake Mountain
 
 New South Wales
 -Thredbo
@@ -22,7 +23,7 @@ New South Wales
 
 This app is not affiliated with any of the above mentioned snow resorts. All images are copyright to their respective owners.
 
-Source code available on GitHub https://github.com/jamesgiang/AusSnowCam 
+Source code available on GitHub https://github.com/jamesgiang/AusSnowCam
 
 ----------
 VERSION HISTORY (CHANGELOG)
@@ -47,6 +48,8 @@ v2.1
 v2.2
 -Added support for "Little Buller Spur" cam for Mt Buller
 -Added support for Lake Mountain
+-Fixed ad & spinner alignment
+
 ----------
 LICENSE
 ----------
