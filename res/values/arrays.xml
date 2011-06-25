@@ -34,6 +34,17 @@
 		<item>Charlotte Pass</item>
 		<item>Lake Mountain</item>
     </array> 
+   	<string-array name="action_list">
+        <item>Mt Buller</item>
+        <item>Mt Hotham</item>
+        <item>Falls Creek</item>
+        <item>Mt Baw Baw</item>
+        <item>Perisher</item>
+        <item>Thredbo</item>
+		<item>Selwyn Snowfields</item>
+		<item>Charlotte Pass</item>
+		<item>Lake Mountain</item>
+    </string-array> 
     <string-array name="mtbuller">
         <item>Bourke Street</item>
         <item>Boggy Creek</item>

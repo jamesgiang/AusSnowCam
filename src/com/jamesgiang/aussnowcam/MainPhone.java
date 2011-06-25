@@ -47,9 +47,6 @@ import com.google.ads.*;
 import com.google.android.apps.analytics.GoogleAnalyticsTracker;
 
 public class MainPhone extends Activity {
-	private static final int MENU1 = Menu.FIRST;
-	private static final int MENU2 = Menu.FIRST + 1;
-	private static final int MENU3 = Menu.FIRST + 2;
 	private WebView webview;
 	private Spinner spnCamSelect;
 	private String app_title;

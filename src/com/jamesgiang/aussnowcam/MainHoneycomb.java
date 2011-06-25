@@ -24,10 +24,9 @@ package com.jamesgiang.aussnowcam;
 
 import java.io.IOException;
 
+import android.app.ActionBar;
+import android.app.ActionBar.OnNavigationListener;
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.DialogInterface;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.Menu;
@@ -41,6 +40,7 @@ import android.webkit.WebViewClient;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.SpinnerAdapter;
 import android.widget.Toast;
 
 import com.google.ads.*;
@@ -81,6 +81,80 @@ public class MainHoneycomb extends Activity {
         spnCamSelect = (Spinner) findViewById(R.id.spnCamSelect);
         AdView adView = (AdView) findViewById(R.id.adView);
         adView.loadAd(new AdRequest());
+        ActionBar actionBar = getActionBar();
+        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
+    	SpinnerAdapter mSpinnerAdapter = ArrayAdapter.createFromResource(this, R.array.action_list, android.R.layout.simple_spinner_dropdown_item);
+        OnNavigationListener mOnNavigationListener = new OnNavigationListener() {
+        	@Override
+        	public boolean onNavigationItemSelected(int position, long itemId) {
+				if(position==0) {
+					try {
+						Utils.WriteSettings(MainHoneycomb.this, "1", "selected_resort");
+						load_mtbuller();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				} else if(position==1) {
+					try {
+						Utils.WriteSettings(MainHoneycomb.this, "2", "selected_resort");
+						load_mthotham();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				} else if(position==2) {
+					try {
+						Utils.WriteSettings(MainHoneycomb.this, "3", "selected_resort");
+						load_fallscreek();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				} else if(position==3) {
+					try {
+						Utils.WriteSettings(MainHoneycomb.this, "4", "selected_resort");
+						load_bawbaw();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				} else if(position==4) {
+					try {
+						Utils.WriteSettings(MainHoneycomb.this, "5", "selected_resort");
+						load_perisher();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				} else if(position==5) {
+					try {
+						Utils.WriteSettings(MainHoneycomb.this, "6", "selected_resort");
+						load_thredbo();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				} else if(position==6) {
+					try {
+						Utils.WriteSettings(MainHoneycomb.this, "7", "selected_resort");
+						load_selwyn();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				} else if(position==7) {
+					try {
+						Utils.WriteSettings(MainHoneycomb.this, "8", "selected_resort");
+						load_charlotte();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				} else if(position==8) {
+					try {
+						Utils.WriteSettings(MainHoneycomb.this, "9", "selected_resort");
+						load_lakemountain();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
+        	    return true;
+        	}
+    	};
+    	actionBar.setListNavigationCallbacks(mSpinnerAdapter, mOnNavigationListener);
         if(Utils.CheckSetting(this, "selected_resort")) {
         	try {
 				if(Utils.ReadSettings(MainHoneycomb.this, "selected_resort").equalsIgnoreCase("1")) {
