@@ -1,6 +1,6 @@
 /**
  * AusSnowCam: View snowcams from Australia's snow resorts
- * File: Main.java
+ * File: MainPhone.java
  *
  * @author James Giang
  *
@@ -45,7 +45,7 @@ import android.widget.Toast;
 import com.google.ads.*;
 import com.google.android.apps.analytics.GoogleAnalyticsTracker;
 
-public class Main extends Activity {
+public class MainPhone extends Activity {
 	private static final int MENU1 = Menu.FIRST;
 	private static final int MENU2 = Menu.FIRST + 1;
 	private static final int MENU3 = Menu.FIRST + 2;
@@ -69,7 +69,7 @@ public class Main extends Activity {
 	@Override
 	protected void onResume() {
 		super.onResume();
-		tracker.trackPageView("/Main");
+		tracker.trackPageView("/MainPhone");
 	}
 	
 	@Override
@@ -88,23 +88,23 @@ public class Main extends Activity {
         adView.loadAd(new AdRequest());
         if(Utils.CheckSetting(this, "selected_resort")) {
         	try {
-				if(Utils.ReadSettings(Main.this, "selected_resort").equalsIgnoreCase("1")) {
+				if(Utils.ReadSettings(MainPhone.this, "selected_resort").equalsIgnoreCase("1")) {
 					load_mtbuller();
-				} else if(Utils.ReadSettings(Main.this, "selected_resort").equalsIgnoreCase("2")){
+				} else if(Utils.ReadSettings(MainPhone.this, "selected_resort").equalsIgnoreCase("2")){
 					load_mthotham();
-				} else if(Utils.ReadSettings(Main.this, "selected_resort").equalsIgnoreCase("3")){
+				} else if(Utils.ReadSettings(MainPhone.this, "selected_resort").equalsIgnoreCase("3")){
 					load_fallscreek();
-				} else if(Utils.ReadSettings(Main.this, "selected_resort").equalsIgnoreCase("4")){
+				} else if(Utils.ReadSettings(MainPhone.this, "selected_resort").equalsIgnoreCase("4")){
 					load_bawbaw();
-				} else if(Utils.ReadSettings(Main.this, "selected_resort").equalsIgnoreCase("5")){
+				} else if(Utils.ReadSettings(MainPhone.this, "selected_resort").equalsIgnoreCase("5")){
 					load_perisher();
-				} else if(Utils.ReadSettings(Main.this, "selected_resort").equalsIgnoreCase("6")){
+				} else if(Utils.ReadSettings(MainPhone.this, "selected_resort").equalsIgnoreCase("6")){
 					load_thredbo();
-				} else if(Utils.ReadSettings(Main.this, "selected_resort").equalsIgnoreCase("7")){
+				} else if(Utils.ReadSettings(MainPhone.this, "selected_resort").equalsIgnoreCase("7")){
 					load_selwyn();
-				} else if(Utils.ReadSettings(Main.this, "selected_resort").equalsIgnoreCase("8")){
+				} else if(Utils.ReadSettings(MainPhone.this, "selected_resort").equalsIgnoreCase("8")){
 					load_charlotte();
-				} else if(Utils.ReadSettings(Main.this, "selected_resort").equalsIgnoreCase("9")){
+				} else if(Utils.ReadSettings(MainPhone.this, "selected_resort").equalsIgnoreCase("9")){
 					load_lakemountain();
 				}
 			} catch (IOException e) {
@@ -112,7 +112,7 @@ public class Main extends Activity {
 			}
         } else {
         	try {
-				Utils.WriteSettings(Main.this, "1", "selected_resort");
+				Utils.WriteSettings(MainPhone.this, "1", "selected_resort");
 				load_mtbuller();
 			} catch (IOException e) {
 				Toast.makeText(getApplicationContext(), "Please select a resort first", Toast.LENGTH_SHORT).show();
@@ -124,10 +124,10 @@ public class Main extends Activity {
         webview.getSettings().setBuiltInZoomControls(true);
         webview.setWebChromeClient(new WebChromeClient() {
 	    	public void onProgressChanged(WebView view, int progress) {
-	    		Main.this.setTitle(getString(R.string.loading));
-	    		Main.this.setProgress(progress * 100); 
+	    		MainPhone.this.setTitle(getString(R.string.loading));
+	    		MainPhone.this.setProgress(progress * 100); 
 	    		if(progress == 100) {
-	    			Main.this.setTitle(app_title);
+	    			MainPhone.this.setTitle(app_title);
 	    		}
 	    	}
         });
@@ -135,7 +135,7 @@ public class Main extends Activity {
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
             	int resort;
 				try {
-					resort = Integer.parseInt(Utils.ReadSettings(Main.this, "selected_resort"));
+					resort = Integer.parseInt(Utils.ReadSettings(MainPhone.this, "selected_resort"));
 				} catch (NumberFormatException e) {
 					resort = 0;
 				} catch (IOException e) {
@@ -462,76 +462,76 @@ public class Main extends Activity {
         switch (item.getItemId()) {
 	        case MENU1:
 	        	tracker.trackEvent("Menu", "Change Resort", "", 0);
-	        	Dialog selectView = new AlertDialog.Builder(Main.this)
+	        	Dialog selectView = new AlertDialog.Builder(MainPhone.this)
 				.setTitle(R.string.changeresort)
 				.setItems(R.array.resort_options, new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int which) {
 						app_title = getString(R.string.app_name);
 						if(which==0) {
 							try {
-								Utils.WriteSettings(Main.this, "1", "selected_resort");
+								Utils.WriteSettings(MainPhone.this, "1", "selected_resort");
 								load_mtbuller();
 							} catch (IOException e) {
 								e.printStackTrace();
 							}
 						} else if(which==1) {
 							try {
-								Utils.WriteSettings(Main.this, "2", "selected_resort");
+								Utils.WriteSettings(MainPhone.this, "2", "selected_resort");
 								load_mthotham();
 							} catch (IOException e) {
 								e.printStackTrace();
 							}
 						} else if(which==2) {
 							try {
-								Utils.WriteSettings(Main.this, "3", "selected_resort");
+								Utils.WriteSettings(MainPhone.this, "3", "selected_resort");
 								load_fallscreek();
 							} catch (IOException e) {
 								e.printStackTrace();
 							}
 						} else if(which==3) {
 							try {
-								Utils.WriteSettings(Main.this, "4", "selected_resort");
+								Utils.WriteSettings(MainPhone.this, "4", "selected_resort");
 								load_bawbaw();
 							} catch (IOException e) {
 								e.printStackTrace();
 							}
 						} else if(which==4) {
 							try {
-								Utils.WriteSettings(Main.this, "5", "selected_resort");
+								Utils.WriteSettings(MainPhone.this, "5", "selected_resort");
 								load_perisher();
 							} catch (IOException e) {
 								e.printStackTrace();
 							}
 						} else if(which==5) {
 							try {
-								Utils.WriteSettings(Main.this, "6", "selected_resort");
+								Utils.WriteSettings(MainPhone.this, "6", "selected_resort");
 								load_thredbo();
 							} catch (IOException e) {
 								e.printStackTrace();
 							}
 						} else if(which==6) {
 							try {
-								Utils.WriteSettings(Main.this, "7", "selected_resort");
+								Utils.WriteSettings(MainPhone.this, "7", "selected_resort");
 								load_selwyn();
 							} catch (IOException e) {
 								e.printStackTrace();
 							}
 						} else if(which==7) {
 							try {
-								Utils.WriteSettings(Main.this, "8", "selected_resort");
+								Utils.WriteSettings(MainPhone.this, "8", "selected_resort");
 								load_charlotte();
 							} catch (IOException e) {
 								e.printStackTrace();
 							}
 						} else if(which==8) {
 							try {
-								Utils.WriteSettings(Main.this, "9", "selected_resort");
+								Utils.WriteSettings(MainPhone.this, "9", "selected_resort");
 								load_lakemountain();
 							} catch (IOException e) {
 								e.printStackTrace();
 							}
 						}
-						Main.this.setTitle(app_title);
+						MainPhone.this.setTitle(app_title);
 					}
 				})
 				.setNegativeButton(R.string.close, null)
@@ -552,7 +552,7 @@ public class Main extends Activity {
     }
     
     private void load_mtbuller() {
-    	ArrayAdapter<?> adapter = ArrayAdapter.createFromResource(Main.this, R.array.mtbuller, android.R.layout.simple_spinner_item);
+    	ArrayAdapter<?> adapter = ArrayAdapter.createFromResource(MainPhone.this, R.array.mtbuller, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnCamSelect.setAdapter(adapter);
         app_title = app_title + " - " + getString(R.string.mtbuller);
