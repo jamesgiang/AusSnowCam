@@ -376,11 +376,11 @@ public class Main extends Activity {
 					case 8:
 						switch(pos) {
 			                case 0:
-			                	webview.loadUrl("http://www.charlottepass.com.au/webcam_th/charlotte1_640_480.jpg");
+			                	webview.loadUrl("http://webcam.charlottepass.com.au/charlotte1_900.jpg");
 			                	tracker.trackEvent(getString(R.string.charlotte), "Cam - " + cams[pos], "", 0);
 			                	break;
 			                case 1:
-			                	webview.loadUrl("http://www.charlottepass.com.au/webcam_th/charlotte2_640_480.jpg");
+			                	webview.loadUrl("http://webcam.charlottepass.com.au/charlotte2_900.jpg");
 			                	tracker.trackEvent(getString(R.string.charlotte), "Cam - " + cams[pos], "", 0);
 			                	break;
 			                default:
