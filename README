@@ -50,6 +50,10 @@ v2.2
 -Added support for Lake Mountain
 -Fixed ad & spinner alignment
 
+v2.2.1
+-Fixed issue with Charlotte Pass' webcams not loading due to new URLs
+-Dropped support Android 1.5 in preparation for Honeycomb updates
+
 ----------
 LICENSE
 ----------
