@@ -31,6 +31,7 @@ import android.content.DialogInterface;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
@@ -451,16 +452,15 @@ public class MainPhone extends Activity {
 	
     @Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-    	menu.add(0, MENU1, 0, R.string.menu1);
-    	menu.add(0, MENU2, 0, R.string.menu2);
-        menu.add(0, MENU3, 0, R.string.menu3);
+    	MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_phone, menu);
         return true;
     }
     
     @Override
 	public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-	        case MENU1:
+	        case R.id.menu1:
 	        	tracker.trackEvent("Menu", "Change Resort", "", 0);
 	        	Dialog selectView = new AlertDialog.Builder(MainPhone.this)
 				.setTitle(R.string.changeresort)
@@ -539,11 +539,11 @@ public class MainPhone extends Activity {
 	        	selectView.show();
 	        	
 	        	return true;
-	        case MENU2:
+	        case R.id.menu2:
 	        	tracker.trackEvent("Menu", "Reload", "", 0);
 	        	webview.reload();
 	        	return true;
-	        case MENU3:
+	        case R.id.menu3:
 	        	tracker.trackEvent("Menu", "About", "", 0);
 	        	Utils.About(this);
 	        	return true;

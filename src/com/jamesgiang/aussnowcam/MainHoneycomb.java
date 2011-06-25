@@ -31,6 +31,7 @@ import android.content.DialogInterface;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
@@ -46,12 +47,8 @@ import com.google.ads.*;
 import com.google.android.apps.analytics.GoogleAnalyticsTracker;
 
 public class MainHoneycomb extends Activity {
-	private static final int MENU1 = Menu.FIRST;
-	private static final int MENU2 = Menu.FIRST + 1;
-	private static final int MENU3 = Menu.FIRST + 2;
 	private WebView webview;
 	private Spinner spnCamSelect;
-	private String app_title;
 	private GoogleAnalyticsTracker tracker;
 	private String[] cams;
 	
@@ -69,7 +66,7 @@ public class MainHoneycomb extends Activity {
 	@Override
 	protected void onResume() {
 		super.onResume();
-		tracker.trackPageView("/MainPhone");
+		tracker.trackPageView("/MainHoneycomb");
 	}
 	
 	@Override
@@ -77,8 +74,6 @@ public class MainHoneycomb extends Activity {
         super.onCreate(savedInstanceState);
         tracker = GoogleAnalyticsTracker.getInstance();
         tracker.start("UA-23871335-1", 20, this);
-        
-        app_title = getString(R.string.app_name);
         getWindow().requestFeature(Window.FEATURE_PROGRESS);
         getWindow().setFeatureInt( Window.FEATURE_PROGRESS, Window.PROGRESS_VISIBILITY_ON);
         setContentView(R.layout.main);
@@ -118,7 +113,6 @@ public class MainHoneycomb extends Activity {
 				Toast.makeText(getApplicationContext(), "Please select a resort first", Toast.LENGTH_SHORT).show();
 			}
         }
-        this.setTitle(app_title);
         webview.setWebViewClient(new MyWebViewClient());
         webview.getSettings().setJavaScriptEnabled(true);
         webview.getSettings().setBuiltInZoomControls(true);
@@ -127,7 +121,7 @@ public class MainHoneycomb extends Activity {
 	    		MainHoneycomb.this.setTitle(getString(R.string.loading));
 	    		MainHoneycomb.this.setProgress(progress * 100); 
 	    		if(progress == 100) {
-	    			MainHoneycomb.this.setTitle(app_title);
+	    			MainHoneycomb.this.setTitle(getString(R.string.app_name));
 	    		}
 	    	}
         });
@@ -451,99 +445,19 @@ public class MainHoneycomb extends Activity {
 	
     @Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-    	menu.add(0, MENU1, 0, R.string.menu1);
-    	menu.add(0, MENU2, 0, R.string.menu2);
-        menu.add(0, MENU3, 0, R.string.menu3);
+    	MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_honeycomb, menu);
         return true;
     }
     
     @Override
 	public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-	        case MENU1:
-	        	tracker.trackEvent("Menu", "Change Resort", "", 0);
-	        	Dialog selectView = new AlertDialog.Builder(MainHoneycomb.this)
-				.setTitle(R.string.changeresort)
-				.setItems(R.array.resort_options, new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog, int which) {
-						app_title = getString(R.string.app_name);
-						if(which==0) {
-							try {
-								Utils.WriteSettings(MainHoneycomb.this, "1", "selected_resort");
-								load_mtbuller();
-							} catch (IOException e) {
-								e.printStackTrace();
-							}
-						} else if(which==1) {
-							try {
-								Utils.WriteSettings(MainHoneycomb.this, "2", "selected_resort");
-								load_mthotham();
-							} catch (IOException e) {
-								e.printStackTrace();
-							}
-						} else if(which==2) {
-							try {
-								Utils.WriteSettings(MainHoneycomb.this, "3", "selected_resort");
-								load_fallscreek();
-							} catch (IOException e) {
-								e.printStackTrace();
-							}
-						} else if(which==3) {
-							try {
-								Utils.WriteSettings(MainHoneycomb.this, "4", "selected_resort");
-								load_bawbaw();
-							} catch (IOException e) {
-								e.printStackTrace();
-							}
-						} else if(which==4) {
-							try {
-								Utils.WriteSettings(MainHoneycomb.this, "5", "selected_resort");
-								load_perisher();
-							} catch (IOException e) {
-								e.printStackTrace();
-							}
-						} else if(which==5) {
-							try {
-								Utils.WriteSettings(MainHoneycomb.this, "6", "selected_resort");
-								load_thredbo();
-							} catch (IOException e) {
-								e.printStackTrace();
-							}
-						} else if(which==6) {
-							try {
-								Utils.WriteSettings(MainHoneycomb.this, "7", "selected_resort");
-								load_selwyn();
-							} catch (IOException e) {
-								e.printStackTrace();
-							}
-						} else if(which==7) {
-							try {
-								Utils.WriteSettings(MainHoneycomb.this, "8", "selected_resort");
-								load_charlotte();
-							} catch (IOException e) {
-								e.printStackTrace();
-							}
-						} else if(which==8) {
-							try {
-								Utils.WriteSettings(MainHoneycomb.this, "9", "selected_resort");
-								load_lakemountain();
-							} catch (IOException e) {
-								e.printStackTrace();
-							}
-						}
-						MainHoneycomb.this.setTitle(app_title);
-					}
-				})
-				.setNegativeButton(R.string.close, null)
-				.create();
-	        	selectView.show();
-	        	
-	        	return true;
-	        case MENU2:
+	        case R.id.menu1:
 	        	tracker.trackEvent("Menu", "Reload", "", 0);
 	        	webview.reload();
 	        	return true;
-	        case MENU3:
+	        case R.id.menu2:
 	        	tracker.trackEvent("Menu", "About", "", 0);
 	        	Utils.About(this);
 	        	return true;
@@ -552,10 +466,9 @@ public class MainHoneycomb extends Activity {
     }
     
     private void load_mtbuller() {
-    	ArrayAdapter<?> adapter = ArrayAdapter.createFromResource(MainHoneycomb.this, R.array.mtbuller, android.R.layout.simple_spinner_item);
+    	ArrayAdapter<?> adapter = ArrayAdapter.createFromResource(this, R.array.mtbuller, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnCamSelect.setAdapter(adapter);
-        app_title = app_title + " - " + getString(R.string.mtbuller);
         cams = getResources().getStringArray(R.array.mtbuller);
         tracker.trackEvent(getString(R.string.mtbuller), "Load resort", "", 0);
     }
@@ -564,7 +477,6 @@ public class MainHoneycomb extends Activity {
     	ArrayAdapter<?> adapter = ArrayAdapter.createFromResource(this, R.array.mthotham, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnCamSelect.setAdapter(adapter);
-        app_title = app_title + " - " + getString(R.string.mthotham);
         cams = getResources().getStringArray(R.array.mthotham);
         tracker.trackEvent(getString(R.string.mthotham), "Load resort", "", 0);
     }
@@ -573,7 +485,6 @@ public class MainHoneycomb extends Activity {
     	ArrayAdapter<?> adapter = ArrayAdapter.createFromResource(this, R.array.fallscreek, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnCamSelect.setAdapter(adapter);
-        app_title = app_title + " - " + getString(R.string.fallscreek);
         cams = getResources().getStringArray(R.array.fallscreek);
         tracker.trackEvent(getString(R.string.fallscreek), "Load resort", "", 0);
     }
@@ -582,7 +493,6 @@ public class MainHoneycomb extends Activity {
     	ArrayAdapter<?> adapter = ArrayAdapter.createFromResource(this, R.array.bawbaw, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnCamSelect.setAdapter(adapter);
-        app_title = app_title + " - " + getString(R.string.bawbaw);
         cams = getResources().getStringArray(R.array.bawbaw);
         tracker.trackEvent(getString(R.string.bawbaw), "Load resort", "", 0);
     }
@@ -591,7 +501,6 @@ public class MainHoneycomb extends Activity {
     	ArrayAdapter<?> adapter = ArrayAdapter.createFromResource(this, R.array.perisher, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnCamSelect.setAdapter(adapter);
-        app_title = app_title + " - " + getString(R.string.perisher);
         cams = getResources().getStringArray(R.array.perisher);
         tracker.trackEvent(getString(R.string.perisher), "Load resort", "", 0);
     }
@@ -600,7 +509,6 @@ public class MainHoneycomb extends Activity {
     	ArrayAdapter<?> adapter = ArrayAdapter.createFromResource(this, R.array.thredbo, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnCamSelect.setAdapter(adapter);
-        app_title = app_title + " - " + getString(R.string.thredbo);
         cams = getResources().getStringArray(R.array.thredbo);
         tracker.trackEvent(getString(R.string.thredbo), "Load resort", "", 0);
     }
@@ -609,7 +517,6 @@ public class MainHoneycomb extends Activity {
     	ArrayAdapter<?> adapter = ArrayAdapter.createFromResource(this, R.array.selwyn, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnCamSelect.setAdapter(adapter);
-        app_title = app_title + " - " + getString(R.string.selwyn);
         cams = getResources().getStringArray(R.array.selwyn);
         tracker.trackEvent(getString(R.string.selwyn), "Load resort", "", 0);
     }
@@ -618,7 +525,6 @@ public class MainHoneycomb extends Activity {
     	ArrayAdapter<?> adapter = ArrayAdapter.createFromResource(this, R.array.charlotte, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnCamSelect.setAdapter(adapter);
-        app_title = app_title + " - " + getString(R.string.charlotte);
         cams = getResources().getStringArray(R.array.charlotte);
         tracker.trackEvent(getString(R.string.charlotte), "Load resort", "", 0);
     }
@@ -627,7 +533,6 @@ public class MainHoneycomb extends Activity {
     	ArrayAdapter<?> adapter = ArrayAdapter.createFromResource(this, R.array.lakemountain, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnCamSelect.setAdapter(adapter);
-        app_title = app_title + " - " + getString(R.string.lakemountain);
         cams = getResources().getStringArray(R.array.lakemountain);
         tracker.trackEvent(getString(R.string.lakemountain), "Load resort", "", 0);
     }
