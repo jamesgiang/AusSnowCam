@@ -10,7 +10,7 @@ public class Launch extends Activity {
 		super.onCreate(savedInstanceState);
 		if(android.os.Build.VERSION.SDK_INT == 11 || android.os.Build.VERSION.SDK_INT == 12  ) {
 			Intent i = new Intent();
-			i.setClassName("com.jamesgiang.aussnowcam", "com.jamesgiang.aussnowcam.MainHoneycomb");
+			i.setClassName("com.jamesgiang.aussnowcam", "com.jamesgiang.aussnowcam.FragmentLayout");
 			startActivity(i);
 			finish();
 		} else {

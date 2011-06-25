@@ -158,7 +158,8 @@ public class MainHoneycomb extends Activity {
         	}
     	};
     	actionBar.setListNavigationCallbacks(mSpinnerAdapter, mOnNavigationListener);
-        if(Utils.CheckSetting(this, "selected_resort")) {
+        
+    	if(Utils.CheckSetting(this, "selected_resort")) {
         	try {
 				if(Utils.ReadSettings(MainHoneycomb.this, "selected_resort").equalsIgnoreCase("1")) {
 					load_mtbuller();
