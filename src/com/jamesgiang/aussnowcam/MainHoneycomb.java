@@ -76,7 +76,10 @@ public class MainHoneycomb extends Activity {
         tracker.start("UA-23871335-1", 20, this);
         getWindow().requestFeature(Window.FEATURE_PROGRESS);
         getWindow().setFeatureInt( Window.FEATURE_PROGRESS, Window.PROGRESS_VISIBILITY_ON);
-        setContentView(R.layout.main);
+        setContentView(R.layout.main_honeycomb);
+        
+        
+        
         webview = (WebView) findViewById(R.id.webview);
         spnCamSelect = (Spinner) findViewById(R.id.spnCamSelect);
         AdView adView = (AdView) findViewById(R.id.adView);
