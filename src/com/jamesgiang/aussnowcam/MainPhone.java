@@ -51,7 +51,7 @@ public class MainPhone extends Activity {
 	private Spinner spnCamSelect;
 	private String app_title;
 	private GoogleAnalyticsTracker tracker;
-	private String[] cams;
+	private String[] resorts;
 	
 	@Override
 	public void onConfigurationChanged (Configuration newConfig) {
@@ -67,7 +67,8 @@ public class MainPhone extends Activity {
 	@Override
 	protected void onResume() {
 		super.onResume();
-		tracker.trackPageView("/MainPhone");
+		tracker.trackPageView("/Main");
+		tracker.setCustomVar(1, "Device", "Phone");
 	}
 	
 	@Override
@@ -75,36 +76,47 @@ public class MainPhone extends Activity {
         super.onCreate(savedInstanceState);
         tracker = GoogleAnalyticsTracker.getInstance();
         tracker.start("UA-23871335-1", 20, this);
-        
+        resorts = getResources().getStringArray(R.array.resort_options);
         app_title = getString(R.string.app_name);
         getWindow().requestFeature(Window.FEATURE_PROGRESS);
         getWindow().setFeatureInt( Window.FEATURE_PROGRESS, Window.PROGRESS_VISIBILITY_ON);
-        setContentView(R.layout.main);
+        setContentView(R.layout.main_phone);
         webview = (WebView) findViewById(R.id.webview);
         spnCamSelect = (Spinner) findViewById(R.id.spnCamSelect);
         AdView adView = (AdView) findViewById(R.id.adView);
         adView.loadAd(new AdRequest());
         if(Utils.CheckSetting(this, "selected_resort")) {
         	try {
-				if(Utils.ReadSettings(MainPhone.this, "selected_resort").equalsIgnoreCase("1")) {
-					load_mtbuller();
-				} else if(Utils.ReadSettings(MainPhone.this, "selected_resort").equalsIgnoreCase("2")){
-					load_mthotham();
-				} else if(Utils.ReadSettings(MainPhone.this, "selected_resort").equalsIgnoreCase("3")){
-					load_fallscreek();
-				} else if(Utils.ReadSettings(MainPhone.this, "selected_resort").equalsIgnoreCase("4")){
-					load_bawbaw();
-				} else if(Utils.ReadSettings(MainPhone.this, "selected_resort").equalsIgnoreCase("5")){
-					load_perisher();
-				} else if(Utils.ReadSettings(MainPhone.this, "selected_resort").equalsIgnoreCase("6")){
-					load_thredbo();
-				} else if(Utils.ReadSettings(MainPhone.this, "selected_resort").equalsIgnoreCase("7")){
-					load_selwyn();
-				} else if(Utils.ReadSettings(MainPhone.this, "selected_resort").equalsIgnoreCase("8")){
-					load_charlotte();
-				} else if(Utils.ReadSettings(MainPhone.this, "selected_resort").equalsIgnoreCase("9")){
-					load_lakemountain();
-				}
+        		app_title = app_title + " - " + resorts[Integer.parseInt(Utils.ReadSettings(MainPhone.this, "selected_resort"))];
+        		switch(Integer.parseInt(Utils.ReadSettings(MainPhone.this, "selected_resort"))) {
+	        		case 0:
+	        			load_mtbuller();
+	        			break;
+	        		case 1:
+	        			load_mthotham();
+	        			break;
+	        		case 2:
+	        			load_fallscreek();
+	        			break;
+	        		case 3:
+	        			load_bawbaw();
+	        			break;
+	        		case 4:
+	        			load_perisher();
+	        			break;
+	        		case 5:
+	        			load_thredbo();
+	        			break;
+	        		case 6:
+	        			load_selwyn();
+	        			break;
+	        		case 7:
+	        			load_charlotte();
+	        			break;
+	        		case 8:
+	        			load_lakemountain();
+	        			break;
+        		}
 			} catch (IOException e) {
 				Toast.makeText(getApplicationContext(), "Please select a resort first", Toast.LENGTH_SHORT).show();
 			}
@@ -132,6 +144,7 @@ public class MainPhone extends Activity {
         spnCamSelect.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
             	int resort;
+            	String[] links;
 				try {
 					resort = Integer.parseInt(Utils.ReadSettings(MainPhone.this, "selected_resort"));
 				} catch (NumberFormatException e) {
@@ -141,294 +154,41 @@ public class MainPhone extends Activity {
 				}
 				switch(resort){
 					case 0:
-						webview.loadData("<html><body><b>" + getString(R.string.noresort) + "</b></body></html>", "text/html", "utf-8");
+						links = getResources().getStringArray(R.array.mtbuller_links);
+	                	webview.loadUrl(links[pos]);
 	                	break;
 					case 1:
-						switch(pos) {
-			                case 0:
-			                	webview.loadUrl("http://www.mtbuller.com.au/snowcam/img_2.jpg");
-			                	tracker.trackEvent(getString(R.string.mtbuller), "Cam - " + cams[pos], "", 0);
-			                	break;
-			                case 1:
-			                	webview.loadUrl("http://www.mtbuller.com.au/snowcam/img_3.jpg");
-			                	tracker.trackEvent(getString(R.string.mtbuller), "Cam - " + cams[pos], "", 0);
-			                	break;
-			                case 2:
-			                	webview.loadUrl("http://www.mtbuller.com.au/snowcam/img_5.jpg");
-			                	tracker.trackEvent(getString(R.string.mtbuller), "Cam - " + cams[pos], "", 0);
-			                	break;
-			                case 3:
-			                	webview.loadUrl("http://www.mtbuller.com.au/snowcam/img_6.jpg");
-			                	tracker.trackEvent(getString(R.string.mtbuller), "Cam - " + cams[pos], "", 0);
-			                	break;
-			                case 4:
-			                	webview.loadUrl("http://www.mtbuller.com.au/snowcam/img_7.jpg");
-			                	tracker.trackEvent(getString(R.string.mtbuller), "Cam - " + cams[pos], "", 0);
-			                	break;
-			                case 5:
-			                	webview.loadUrl("http://www.mtbuller.com.au/snowcam/img_1.jpg");
-			                	tracker.trackEvent(getString(R.string.mtbuller), "Cam - " + cams[pos], "", 0);
-			                	break;
-			                default:
-			                	webview.loadData("<html><body><b>" + getString(R.string.nocam) + "</b></body></html>", "text/html", "utf-8");
-			                	tracker.trackEvent(getString(R.string.mtbuller), "Cam - Error", "", 0);
-						}
-						break;
+						links = getResources().getStringArray(R.array.mthotham_links);
+	                	webview.loadUrl(links[pos]);
+	                	break;
 					case 2:
-						switch(pos) {
-			                case 0:
-			                	webview.loadUrl("http://hotham.ski.com.au/cams/hotham-snakegully1.jpg");
-			                	tracker.trackEvent(getString(R.string.mthotham), "Cam - " + cams[pos], "", 0);
-			                	break;
-			                case 1:
-			                	webview.loadUrl("http://hotham.ski.com.au/cams/hotham-bigd1.jpg");
-			                	tracker.trackEvent(getString(R.string.mthotham), "Cam - " + cams[pos], "", 0);
-			                	break;
-			                case 2:
-			                	 webview.loadUrl("http://hotham.ski.com.au/cams/hotham-central1.jpg");
-			                	 tracker.trackEvent(getString(R.string.mthotham), "Cam - " + cams[pos], "", 0);
-			                	 break;
-			                case 3:
-			                	 webview.loadUrl("http://hotham.ski.com.au/cams/hotham-heavenly1.jpg");
-			                	 tracker.trackEvent(getString(R.string.mthotham), "Cam - " + cams[pos], "", 0);
-			                	break;
-			                case 4:
-			                	 webview.loadUrl("http://hotham.ski.com.au/cams/dinnerplain1.jpg");
-			                	 tracker.trackEvent(getString(R.string.mthotham), "Cam - " + cams[pos], "", 0);
-			                	break;
-			                default:
-			                	webview.loadData("<html><body><b>" + getString(R.string.nocam) + "</b></body></html>", "text/html", "utf-8");
-			                	tracker.trackEvent(getString(R.string.mthotham), "Cam - Error", "", 0);
-						}
-						break;
+						links = getResources().getStringArray(R.array.fallscreek_links);
+	                	webview.loadUrl(links[pos]);
+	                	break;
 					case 3:
-						switch(pos) {
-			                case 0:
-			                	webview.loadUrl("http://fallscreek.ski.com.au/cams/fallscreek-drovers1.jpg");
-			                	tracker.trackEvent(getString(R.string.fallscreek), "Cam - " + cams[pos], "", 0);
-			                	break;
-			                case 1:
-			                	 webview.loadUrl("http://fallscreek.ski.com.au/cams/fallscreek-drovers8.jpg");
-			                	 tracker.trackEvent(getString(R.string.fallscreek), "Cam - " + cams[pos], "", 0);
-			                	break;
-			                case 2:
-			                	 webview.loadUrl("http://fallscreek.ski.com.au/cams/fallscreek-towers2.jpg");
-			                	 tracker.trackEvent(getString(R.string.fallscreek), "Cam - " + cams[pos], "", 0);
-			                	break;
-			                case 3:
-			                	 webview.loadUrl("http://fallscreek.ski.com.au/cams/fallscreek-dickey1.jpg");
-			                	 tracker.trackEvent(getString(R.string.fallscreek), "Cam - " + cams[pos], "", 0);
-			                	break;
-			                case 4:
-			                	 webview.loadUrl("http://fallscreek.ski.com.au/cams/fallscreek-express4.jpg");
-			                	 tracker.trackEvent(getString(R.string.fallscreek), "Cam - " + cams[pos], "", 0);
-			                	break;
-			                case 5:
-			                	 webview.loadUrl("http://fallscreek.ski.com.au/cams/fallscreek-nissen6.jpg");
-			                	 tracker.trackEvent(getString(R.string.fallscreek), "Cam - " + cams[pos], "", 0);
-			                	break;
-			                case 6:
-			                	 webview.loadUrl("http://fallscreek.ski.com.au/cams/fallscreek-nissen1.jpg");
-			                	 tracker.trackEvent(getString(R.string.fallscreek), "Cam - " + cams[pos], "", 0);
-			                	break;
-			                default:
-			                	webview.loadData("<html><body><b>" + getString(R.string.nocam) + "</b></body></html>", "text/html", "utf-8");
-			                	tracker.trackEvent(getString(R.string.fallscreek), "Cam - Error", "", 0);
-						}
-						break;
+						links = getResources().getStringArray(R.array.bawbaw_links);
+	                	webview.loadUrl(links[pos]);
+	                	break;
 					case 4:
-						switch(pos) {
-			                case 0:
-			                	webview.loadUrl("http://www.mountbawbaw.com.au/images/snowcams/camera3.jpg");
-			                	tracker.trackEvent(getString(R.string.bawbaw), "Cam - " + cams[pos], "", 0);
-			                	break;
-			                case 1:
-			                	webview.loadUrl("http://www.mountbawbaw.com.au/images/snowcams/camera2.jpg");
-			                	tracker.trackEvent(getString(R.string.bawbaw), "Cam - " + cams[pos], "", 0);
-			                	break;
-			                case 2:
-			                	webview.loadUrl("http://www.mountbawbaw.com.au/images/snowcams/camera1.jpg");
-			                	tracker.trackEvent(getString(R.string.bawbaw), "Cam - " + cams[pos], "", 0);
-			                	break;
-			                case 3:
-			                	webview.loadUrl("http://www.mountbawbaw.com.au/images/snowcams/camera4.jpg");
-			                	tracker.trackEvent(getString(R.string.bawbaw), "Cam - " + cams[pos], "", 0);
-			                	break;
-			                case 4:
-			                	webview.loadUrl("http://www.mountbawbaw.com.au/images/snowcams/camera5.jpg");
-			                	tracker.trackEvent(getString(R.string.bawbaw), "Cam - " + cams[pos], "", 0);
-			                	break;
-			                case 5:
-			                	webview.loadUrl("http://www.mountbawbaw.com.au/images/snowcams/camera6.jpg");
-			                	tracker.trackEvent(getString(R.string.bawbaw), "Cam - " + cams[pos], "", 0);
-			                	break;
-			                default:
-			                	webview.loadData("<html><body><b>" + getString(R.string.nocam) + "</b></body></html>", "text/html", "utf-8");
-			                	tracker.trackEvent(getString(R.string.bawbaw), "Cam - Error", "", 0);
-						}
-						break;
+						links = getResources().getStringArray(R.array.perisher_links);
+	                	webview.loadUrl(links[pos]);
+	                	break;
 					case 5:
-						switch(pos) {
-			                case 0:
-			                	webview.loadUrl("http://perisher.com.au/images/snowcams/Xv8.jpg");
-			                	tracker.trackEvent(getString(R.string.perisher), "Cam - " + cams[pos], "", 0);
-			                	break;
-			                case 1:
-			                	webview.loadUrl("http://perisher.com.au/images/snowcams/Xfront.jpg");
-			                	tracker.trackEvent(getString(R.string.perisher), "Cam - " + cams[pos], "", 0);
-			                	break;
-			                case 2:
-			                	webview.loadUrl("http://perisher.com.au/images/snowcams/xnorthp.jpg");
-			                	tracker.trackEvent(getString(R.string.perisher), "Cam - " + cams[pos], "", 0);
-			                	break;
-			                case 3:
-			                	webview.loadUrl("http://perisher.com.au/images/snowcams/Xmtp.jpg");
-			                	tracker.trackEvent(getString(R.string.perisher), "Cam - " + cams[pos], "", 0);
-			                	break;
-			                case 4:
-			                	webview.loadUrl("http://perisher.com.au/images/snowcams/Xbluecow.jpg");
-			                	tracker.trackEvent(getString(R.string.perisher), "Cam - " + cams[pos], "", 0);
-			                	break;
-			                case 5:
-			                	webview.loadUrl("http://perisher.com.au/images/snowcams/Xsmiggin.jpg");
-			                	tracker.trackEvent(getString(R.string.perisher), "Cam - " + cams[pos], "", 0);
-			                	break;
-			                case 6:
-			                	webview.loadUrl("http://perisher.com.au/images/snowcams/Xridge.jpg");
-			                	tracker.trackEvent(getString(R.string.perisher), "Cam - " + cams[pos], "", 0);
-			                	break;
-			                case 7:
-			                	webview.loadUrl("http://perisher.com.au/images/snowcams/Xcowt.jpg");
-			                	tracker.trackEvent(getString(R.string.perisher), "Cam - " + cams[pos], "", 0);
-			                	break;
-			                case 8:
-			                	webview.loadUrl("http://perisher.com.au/images/snowcams/Xtube.jpg");
-			                	tracker.trackEvent(getString(R.string.perisher), "Cam - " + cams[pos], "", 0);
-			                	break;
-			                default:
-			                	webview.loadData("<html><body><b>" + getString(R.string.nocam) + "</b></body></html>", "text/html", "utf-8");
-			                	tracker.trackEvent(getString(R.string.perisher), "Cam - Error", "", 0);
-						}
-						break;
+						links = getResources().getStringArray(R.array.thredbo_links);
+	                	webview.loadUrl(links[pos]);
+	                	break;
 					case 6:
-						switch(pos) {
-			                case 0:
-			                	webview.loadUrl("http://www.thredbo.com.au/liveimages/Basin01.jpg");
-			                	tracker.trackEvent(getString(R.string.thredbo), "Cam - " + cams[pos], "", 0);
-			                	break;
-			                case 1:
-			                	webview.loadUrl("http://www.thredbo.com.au/liveimages/EaglesNest01.jpg");
-			                	tracker.trackEvent(getString(R.string.thredbo), "Cam - " + cams[pos], "", 0);
-			                	break;
-			                case 2:
-			                	webview.loadUrl("http://www.thredbo.com.au/liveimages/AlpineWay01.jpg");
-			                	tracker.trackEvent(getString(R.string.thredbo), "Cam - " + cams[pos], "", 0);
-			                	break;
-			                case 3:
-			                	webview.loadUrl("http://www.thredbo.com.au/liveimages/KosciuszkoExpress01.jpg");
-			                	tracker.trackEvent(getString(R.string.thredbo), "Cam - " + cams[pos], "", 0);
-			                	break;
-			                case 4:
-			                	webview.loadUrl("http://www.thredbo.com.au/liveimages/AlpineWay02.jpg");
-			                	tracker.trackEvent(getString(R.string.thredbo), "Cam - " + cams[pos], "", 0);
-			                	break;
-			                case 5:
-			                	webview.loadUrl("http://www.thredbo.com.au/liveimages/Cruiser01.jpg");
-			                	tracker.trackEvent(getString(R.string.thredbo), "Cam - " + cams[pos], "", 0);
-			                	break;
-			                case 6:
-			                	webview.loadUrl("http://www.thredbo.com.au/liveimages/FridayFlat01.jpg");
-			                	tracker.trackEvent(getString(R.string.thredbo), "Cam - " + cams[pos], "", 0);
-			                	break;
-			                default:
-			                	webview.loadData("<html><body><b>" + getString(R.string.nocam) + "</b></body></html>", "text/html", "utf-8");
-						}
-						break;
+						links = getResources().getStringArray(R.array.selwyn_links);
+	                	webview.loadUrl(links[pos]);
+	                	break;
 					case 7:
-						switch(pos) {
-			                case 0:
-			                	webview.loadUrl("http://selwynsnowcams.com/view/images/camera_01_latest/c01_left_000M.jpg");
-			                	tracker.trackEvent(getString(R.string.selwyn), "Cam - " + cams[pos], "", 0);
-			                	break;
-			                case 1:
-			                	webview.loadUrl("http://selwynsnowcams.com/view/images/camera_01_latest/c01_right_000M.jpg");
-			                	tracker.trackEvent(getString(R.string.selwyn), "Cam - " + cams[pos], "", 0);
-			                	break;
-			                case 2:
-			                	webview.loadUrl("http://selwynsnowcams.com/view/images/camera_02_latest/c02_left_000M.jpg");
-			                	tracker.trackEvent(getString(R.string.selwyn), "Cam - " + cams[pos], "", 0);
-			                	break;
-			                case 3:
-			                	webview.loadUrl("http://selwynsnowcams.com/view/images/camera_02_latest/c02_right_000M.jpg");
-			                	tracker.trackEvent(getString(R.string.selwyn), "Cam - " + cams[pos], "", 0);
-			                	break;
-			                case 4:
-			                	webview.loadUrl("http://selwynsnowcams.com/view/images/camera_03_latest/c03_000M.jpg");
-			                	tracker.trackEvent(getString(R.string.selwyn), "Cam - " + cams[pos], "", 0);
-			                	break;
-			                default:
-			                	webview.loadData("<html><body><b>" + getString(R.string.nocam) + "</b></body></html>", "text/html", "utf-8");
-			                	tracker.trackEvent(getString(R.string.selwyn), "Cam - Error", "", 0);
-						}
-						break;
+						links = getResources().getStringArray(R.array.charlotte_links);
+	                	webview.loadUrl(links[pos]);
+	                	break;
 					case 8:
-						switch(pos) {
-			                case 0:
-			                	webview.loadUrl("http://webcam.charlottepass.com.au/charlotte1_900.jpg");
-			                	tracker.trackEvent(getString(R.string.charlotte), "Cam - " + cams[pos], "", 0);
-			                	break;
-			                case 1:
-			                	webview.loadUrl("http://webcam.charlottepass.com.au/charlotte2_900.jpg");
-			                	tracker.trackEvent(getString(R.string.charlotte), "Cam - " + cams[pos], "", 0);
-			                	break;
-			                default:
-			                	webview.loadData("<html><body><b>" + getString(R.string.nocam) + "</b></body></html>", "text/html", "utf-8");
-			                	tracker.trackEvent(getString(R.string.charlotte), "Cam - Error", "", 0);
-						}
-						break;
-					case 9:
-						switch(pos) {
-							case 0:
-								webview.loadUrl("http://www.murrindindicomputers.com.au/lakemountain/trun.jpg");
-								tracker.trackEvent(getString(R.string.lakemountain), "Cam - " + cams[pos], "", 0);
-								break;
-							case 1:
-								webview.loadUrl("http://www.murrindindicomputers.com.au/lakemountain/village.jpg");
-								tracker.trackEvent(getString(R.string.lakemountain), "Cam - " + cams[pos], "", 0);
-								break;
-							case 2:
-								webview.loadUrl("http://lakemountainresort.com.au/~webcam/1.jpg");
-								tracker.trackEvent(getString(R.string.lakemountain), "Cam - " + cams[pos], "", 0);
-								break;
-							case 3:
-								webview.loadUrl("http://lakemountainresort.com.au/~webcam/2.jpg");
-								tracker.trackEvent(getString(R.string.lakemountain), "Cam - " + cams[pos], "", 0);
-								break;
-							case 4:
-								webview.loadUrl("http://lakemountainresort.com.au/~webcam/3.jpg");
-								tracker.trackEvent(getString(R.string.lakemountain), "Cam - " + cams[pos], "", 0);
-								break;
-							case 5:
-								webview.loadUrl("http://lakemountainresort.com.au/~webcam/4.jpg");
-								tracker.trackEvent(getString(R.string.lakemountain), "Cam - " + cams[pos], "", 0);
-								break;
-							case 6:
-								webview.loadUrl("http://lakemountainresort.com.au/~webcam/5.jpg");
-								tracker.trackEvent(getString(R.string.lakemountain), "Cam - " + cams[pos], "", 0);
-								break;
-							case 7:
-								webview.loadUrl("http://lakemountainresort.com.au/~webcam/6.jpg");
-								tracker.trackEvent(getString(R.string.lakemountain), "Cam - " + cams[pos], "", 0);
-								break;
-							case 8:
-								webview.loadUrl("http://lakemountainresort.com.au/~webcam/7.jpg");
-								tracker.trackEvent(getString(R.string.lakemountain), "Cam - " + cams[pos], "", 0);
-								break;
-							default:
-								webview.loadData("<html><body><b>" + getString(R.string.nocam) + "</b></body></html>", "text/html", "utf-8");
-			                	tracker.trackEvent(getString(R.string.lakemountain), "Cam - Error", "", 0);
-						}
-						break;
+						links = getResources().getStringArray(R.array.lakemountain_links);
+	                	webview.loadUrl(links[pos]);
+	                	break;
 	                default:
 	                	webview.loadData("<html><body><b>" + getString(R.string.noresort) + "</b></body></html>", "text/html", "utf-8");
             	}
@@ -450,7 +210,7 @@ public class MainPhone extends Activity {
     @Override
 	public boolean onCreateOptionsMenu(Menu menu) {
     	MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.main_phone, menu);
+        inflater.inflate(R.menu.phone_menu, menu);
         return true;
     }
     
@@ -463,70 +223,48 @@ public class MainPhone extends Activity {
 				.setTitle(R.string.changeresort)
 				.setItems(R.array.resort_options, new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int which) {
-						app_title = getString(R.string.app_name);
-						if(which==0) {
-							try {
-								Utils.WriteSettings(MainPhone.this, "1", "selected_resort");
+						tracker.trackEvent("Load Resorts", resorts[which], "", 0);
+						app_title = getString(R.string.app_name) + " - " + resorts[which];
+						try {
+							switch(which) {
+							case 0:
+								Utils.WriteSettings(MainPhone.this, "0", "selected_resort");
 								load_mtbuller();
-							} catch (IOException e) {
-								e.printStackTrace();
-							}
-						} else if(which==1) {
-							try {
-								Utils.WriteSettings(MainPhone.this, "2", "selected_resort");
+								break;
+							case 1:
+								Utils.WriteSettings(MainPhone.this, "1", "selected_resort");
 								load_mthotham();
-							} catch (IOException e) {
-								e.printStackTrace();
-							}
-						} else if(which==2) {
-							try {
-								Utils.WriteSettings(MainPhone.this, "3", "selected_resort");
+								break;
+							case 2:
+								Utils.WriteSettings(MainPhone.this, "2", "selected_resort");
 								load_fallscreek();
-							} catch (IOException e) {
-								e.printStackTrace();
-							}
-						} else if(which==3) {
-							try {
-								Utils.WriteSettings(MainPhone.this, "4", "selected_resort");
+								break;
+							case 3:
+								Utils.WriteSettings(MainPhone.this, "3", "selected_resort");
 								load_bawbaw();
-							} catch (IOException e) {
-								e.printStackTrace();
-							}
-						} else if(which==4) {
-							try {
-								Utils.WriteSettings(MainPhone.this, "5", "selected_resort");
+								break;
+							case 4:
+								Utils.WriteSettings(MainPhone.this, "4", "selected_resort");
 								load_perisher();
-							} catch (IOException e) {
-								e.printStackTrace();
-							}
-						} else if(which==5) {
-							try {
-								Utils.WriteSettings(MainPhone.this, "6", "selected_resort");
+								break;
+							case 5:
+								Utils.WriteSettings(MainPhone.this, "5", "selected_resort");
 								load_thredbo();
-							} catch (IOException e) {
-								e.printStackTrace();
-							}
-						} else if(which==6) {
-							try {
-								Utils.WriteSettings(MainPhone.this, "7", "selected_resort");
+								break;
+							case 6:
+								Utils.WriteSettings(MainPhone.this, "6", "selected_resort");
 								load_selwyn();
-							} catch (IOException e) {
-								e.printStackTrace();
-							}
-						} else if(which==7) {
-							try {
-								Utils.WriteSettings(MainPhone.this, "8", "selected_resort");
+							case 7:
+								Utils.WriteSettings(MainPhone.this, "7", "selected_resort");
 								load_charlotte();
-							} catch (IOException e) {
-								e.printStackTrace();
-							}
-						} else if(which==8) {
-							try {
-								Utils.WriteSettings(MainPhone.this, "9", "selected_resort");
+								break;
+							case 8:
+								Utils.WriteSettings(MainPhone.this, "8", "selected_resort");
 								load_lakemountain();
-							} catch (IOException e) {
-								e.printStackTrace();
+								break;
 							}
+						} catch (IOException e) {
+							e.printStackTrace();
 						}
 						MainPhone.this.setTitle(app_title);
 					}
@@ -552,80 +290,53 @@ public class MainPhone extends Activity {
     	ArrayAdapter<?> adapter = ArrayAdapter.createFromResource(MainPhone.this, R.array.mtbuller, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnCamSelect.setAdapter(adapter);
-        app_title = app_title + " - " + getString(R.string.mtbuller);
-        cams = getResources().getStringArray(R.array.mtbuller);
-        tracker.trackEvent(getString(R.string.mtbuller), "Load resort", "", 0);
     }
     
     private void load_mthotham() {
     	ArrayAdapter<?> adapter = ArrayAdapter.createFromResource(this, R.array.mthotham, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnCamSelect.setAdapter(adapter);
-        app_title = app_title + " - " + getString(R.string.mthotham);
-        cams = getResources().getStringArray(R.array.mthotham);
-        tracker.trackEvent(getString(R.string.mthotham), "Load resort", "", 0);
     }
     
     private void load_fallscreek() {
     	ArrayAdapter<?> adapter = ArrayAdapter.createFromResource(this, R.array.fallscreek, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnCamSelect.setAdapter(adapter);
-        app_title = app_title + " - " + getString(R.string.fallscreek);
-        cams = getResources().getStringArray(R.array.fallscreek);
-        tracker.trackEvent(getString(R.string.fallscreek), "Load resort", "", 0);
     }
     
     private void load_bawbaw() {
     	ArrayAdapter<?> adapter = ArrayAdapter.createFromResource(this, R.array.bawbaw, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnCamSelect.setAdapter(adapter);
-        app_title = app_title + " - " + getString(R.string.bawbaw);
-        cams = getResources().getStringArray(R.array.bawbaw);
-        tracker.trackEvent(getString(R.string.bawbaw), "Load resort", "", 0);
     }
     
     private void load_perisher(){
     	ArrayAdapter<?> adapter = ArrayAdapter.createFromResource(this, R.array.perisher, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnCamSelect.setAdapter(adapter);
-        app_title = app_title + " - " + getString(R.string.perisher);
-        cams = getResources().getStringArray(R.array.perisher);
-        tracker.trackEvent(getString(R.string.perisher), "Load resort", "", 0);
     }
     
     private void load_thredbo() {
     	ArrayAdapter<?> adapter = ArrayAdapter.createFromResource(this, R.array.thredbo, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnCamSelect.setAdapter(adapter);
-        app_title = app_title + " - " + getString(R.string.thredbo);
-        cams = getResources().getStringArray(R.array.thredbo);
-        tracker.trackEvent(getString(R.string.thredbo), "Load resort", "", 0);
     }
     
     private void load_selwyn() {
     	ArrayAdapter<?> adapter = ArrayAdapter.createFromResource(this, R.array.selwyn, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnCamSelect.setAdapter(adapter);
-        app_title = app_title + " - " + getString(R.string.selwyn);
-        cams = getResources().getStringArray(R.array.selwyn);
-        tracker.trackEvent(getString(R.string.selwyn), "Load resort", "", 0);
     }
     
     private void load_charlotte() {
     	ArrayAdapter<?> adapter = ArrayAdapter.createFromResource(this, R.array.charlotte, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnCamSelect.setAdapter(adapter);
-        app_title = app_title + " - " + getString(R.string.charlotte);
-        cams = getResources().getStringArray(R.array.charlotte);
-        tracker.trackEvent(getString(R.string.charlotte), "Load resort", "", 0);
     }
     
     private void load_lakemountain() {
     	ArrayAdapter<?> adapter = ArrayAdapter.createFromResource(this, R.array.lakemountain, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnCamSelect.setAdapter(adapter);
-        app_title = app_title + " - " + getString(R.string.lakemountain);
-        cams = getResources().getStringArray(R.array.lakemountain);
-        tracker.trackEvent(getString(R.string.lakemountain), "Load resort", "", 0);
     }
 }

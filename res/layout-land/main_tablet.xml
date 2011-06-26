@@ -2,7 +2,7 @@
 <!-- 
 /**
  * AusSnowCam: View snowcams from Australia's snow resorts
- * File: fragment_layout.xml
+ * File: main_tablet.xml
  *
  * @author James Giang
  *
@@ -22,14 +22,13 @@
  *
  */
  -->
- 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="match_parent" android:layout_height="match_parent">
-    <fragment class="com.jamesgiang.aussnowcam.FragmentList"
-            android:id="@+id/cam" android:layout_weight="1"
+    <fragment class="com.jamesgiang.aussnowcam.Fragments.CamList"
+            android:id="@+id/camlist" android:layout_weight="1"
             android:layout_width="0px" android:layout_height="match_parent" />
-	<fragment class="com.jamesgiang.aussnowcam.FragmentViewer"
-            android:id="@+id/viewer" android:layout_weight="2"
+	<fragment class="com.jamesgiang.aussnowcam.Fragments.CamViewer"
+            android:id="@+id/camviewer" android:layout_weight="2"
             android:layout_width="0px" android:layout_height="match_parent" />
 </LinearLayout>
