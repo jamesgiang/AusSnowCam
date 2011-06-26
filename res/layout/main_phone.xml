@@ -45,8 +45,7 @@
 			android:id="@+id/spnCamSelect"
 			android:layout_width="fill_parent"
 			android:layout_height="wrap_content"
-			android:prompt="@string/snowcam_prompt">
-   		</Spinner>
+			android:prompt="@string/snowcam_prompt" />
 	</LinearLayout>
    	<LinearLayout
 		android:id="@+id/content"
@@ -56,7 +55,6 @@
 		<WebView
 			android:id="@+id/webview"
 			android:layout_width="fill_parent"
-			android:layout_height="fill_parent">
-		</WebView>
+			android:layout_height="fill_parent" />
 	</LinearLayout>
 </LinearLayout>
