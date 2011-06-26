@@ -75,13 +75,13 @@ public class Utils {
 		return data; 
     }
 	
-    public static boolean CheckSetting(Context context, String file) {
-        String[] filenames = context.fileList();
-        for (String name : filenames) {
-          if (name.equals(file)) {
-            return true;
-          }
-        }
-        return false;
-    }
+	public static boolean CheckSetting(Context context, String file) {
+		String[] filenames = context.fileList();
+		for (String name : filenames) {
+			if (name.equals(file)) {
+				return true;
+			}
+		}
+		return false;
+	}
 }

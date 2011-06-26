@@ -22,18 +22,8 @@
  *
  */
  -->
- 
 <resources>
     <string name="app_name">AusSnowCam</string>
-    <string name="mtbuller">Mt Buller</string>
-    <string name="mthotham">Mt Hotham</string>
-    <string name="fallscreek">Falls Creek</string>
-    <string name="bawbaw">Mt Baw Baw</string>
-    <string name="perisher">Perisher</string>
-    <string name="thredbo">Thredbo</string>
-    <string name="selwyn">Selwyn Snowfields</string>
-	<string name="charlotte">Charlotte Pass</string>
-	<string name="lakemountain">Lake Mountain</string>
     <string name="phone_menu1">Set Resort</string>
     <string name="phone_menu2">Refresh</string>
     <string name="phone_menu3">About</string>
@@ -42,7 +32,7 @@
     <string name="close">Close</string>
     <string name="loading">Loading snowcam...</string>
     <string name="snowcam_prompt">Select a snowcam</string>
-    <string name="changeresort">Change Resorts</string>
+    <string name="changeresort">Set Resort</string>
     <string name="nocam">Please select a snow cam</string>
     <string name="noresort">Please select a resort</string>
     <string name="about_info">See what\&apos;s happening at mountains across Australia from your phone with ease!\n\nDeveloped by James Giang\nwww.jamesgiang.com</string>
