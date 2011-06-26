@@ -22,6 +22,11 @@
 
 package com.jamesgiang.aussnowcam;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import com.google.ads.AdRequest;
+import com.google.ads.AdView;
 import com.google.android.apps.analytics.GoogleAnalyticsTracker;
 import com.jamesgiang.aussnowcam.Fragments.CamList;
 import com.jamesgiang.aussnowcam.Fragments.CamViewer;
@@ -61,6 +66,15 @@ public class MainTablet extends Activity {
         setContentView(R.layout.main_tablet);
         tracker = GoogleAnalyticsTracker.getInstance();
         tracker.start("UA-23871335-1", 20, this);
+        
+        Map<String, Object> extras = new HashMap<String, Object>();
+        extras.put("color_bg", "000000");
+        extras.put("color_text", "FFFFFF");
+        AdRequest adRequest = new AdRequest();
+        adRequest.setExtras(extras);
+        AdView adView = (AdView) findViewById(R.id.adView);
+        adView.loadAd(adRequest);
+        
         ActionBar actionBar = getActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
     	SpinnerAdapter mSpinnerAdapter = ArrayAdapter.createFromResource(this, R.array.resort_options, android.R.layout.simple_spinner_dropdown_item);

@@ -23,6 +23,8 @@
 package com.jamesgiang.aussnowcam;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -83,8 +85,15 @@ public class MainPhone extends Activity {
         setContentView(R.layout.main_phone);
         webview = (WebView) findViewById(R.id.webview);
         spnCamSelect = (Spinner) findViewById(R.id.spnCamSelect);
+        
+        Map<String, Object> extras = new HashMap<String, Object>();
+        extras.put("color_bg", "D8EBF7");
+        extras.put("color_text", "4C586A");
+        AdRequest adRequest = new AdRequest();
+        adRequest.setExtras(extras);
         AdView adView = (AdView) findViewById(R.id.adView);
-        adView.loadAd(new AdRequest());
+        adView.loadAd(adRequest);
+        
         if(Utils.CheckSetting(this, "selected_resort")) {
         	try {
         		app_title = app_title + " - " + resorts[Integer.parseInt(Utils.ReadSettings(MainPhone.this, "selected_resort"))];

@@ -23,12 +23,29 @@
  */
  -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
     android:orientation="horizontal"
-    android:layout_width="match_parent" android:layout_height="match_parent">
-    <fragment class="com.jamesgiang.aussnowcam.Fragments.CamList"
-            android:id="@+id/camlist" android:layout_weight="1"
-            android:layout_width="0px" android:layout_height="match_parent" />
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+    	android:orientation="vertical"
+    	android:layout_width="0px"
+    	android:layout_height="match_parent"
+    	android:layout_weight="1">
+    	<com.google.ads.AdView android:id="@+id/adView"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			ads:adUnitId="a14dee1ce46976e"
+			ads:adSize="BANNER"
+			ads:loadAdOnCreate="true" />
+    	<fragment class="com.jamesgiang.aussnowcam.Fragments.CamList"
+            android:id="@+id/camlist"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
+   	</LinearLayout>
 	<fragment class="com.jamesgiang.aussnowcam.Fragments.CamViewer"
-            android:id="@+id/camviewer" android:layout_weight="2"
-            android:layout_width="0px" android:layout_height="match_parent" />
+            android:id="@+id/camviewer"
+            android:layout_weight="2"
+            android:layout_width="0px"
+            android:layout_height="match_parent" />
 </LinearLayout>
