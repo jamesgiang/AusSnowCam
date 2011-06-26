@@ -132,7 +132,6 @@ public class MainPhone extends Activity {
         } else {
         	try {
 				Utils.WriteSettings(MainPhone.this, "0", "selected_resort");
-				links = getResources().getStringArray(R.array.mtbuller_links);
 				app_title = app_title + " - " + resorts[Integer.parseInt(Utils.ReadSettings(MainPhone.this, "selected_resort"))];
 				load_mtbuller();
 			} catch (IOException e) {
