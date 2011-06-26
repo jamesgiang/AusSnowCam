@@ -50,6 +50,7 @@ public class CamViewer extends Fragment {
 		webview.setWebViewClient(new MyWebViewClient());
         webview.getSettings().setJavaScriptEnabled(true);
         webview.getSettings().setBuiltInZoomControls(true);
+        webview.setInitialScale(150);
         webview.setWebChromeClient(new WebChromeClient() {
 	    	public void onProgressChanged(WebView view, int progress) {
 	    		getActivity().setTitle(getString(R.string.loading));
