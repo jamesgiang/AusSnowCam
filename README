@@ -54,6 +54,14 @@ v2.2.1
 -Fixed issue with Charlotte Pass' webcams not loading due to new URLs
 -Dropped support Android 1.5 in preparation for Honeycomb updates
 
+v3.0
+General
+-Added menu icons
+-Reworked code-base
+
+Tablets
+-Optimized layout for tablet devices
+
 ----------
 LICENSE
 ----------
