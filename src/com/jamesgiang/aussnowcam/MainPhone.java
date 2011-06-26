@@ -54,7 +54,7 @@ public class MainPhone extends Activity {
 	private String app_title;
 	private GoogleAnalyticsTracker tracker;
 	private String[] resorts;
-	
+	private String[] links;
 	@Override
 	public void onConfigurationChanged (Configuration newConfig) {
 		super.onConfigurationChanged(newConfig);
@@ -131,7 +131,9 @@ public class MainPhone extends Activity {
 			}
         } else {
         	try {
-				Utils.WriteSettings(MainPhone.this, "1", "selected_resort");
+				Utils.WriteSettings(MainPhone.this, "0", "selected_resort");
+				links = getResources().getStringArray(R.array.mtbuller_links);
+				app_title = app_title + " - " + resorts[Integer.parseInt(Utils.ReadSettings(MainPhone.this, "selected_resort"))];
 				load_mtbuller();
 			} catch (IOException e) {
 				Toast.makeText(getApplicationContext(), "Please select a resort first", Toast.LENGTH_SHORT).show();
@@ -152,55 +154,7 @@ public class MainPhone extends Activity {
         });
         spnCamSelect.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-            	int resort;
-            	String[] links;
-				try {
-					resort = Integer.parseInt(Utils.ReadSettings(MainPhone.this, "selected_resort"));
-				} catch (NumberFormatException e) {
-					resort = 0;
-				} catch (IOException e) {
-					resort = 0;
-				}
-				switch(resort){
-					case 0:
-						links = getResources().getStringArray(R.array.mtbuller_links);
-	                	webview.loadUrl(links[pos]);
-	                	break;
-					case 1:
-						links = getResources().getStringArray(R.array.mthotham_links);
-	                	webview.loadUrl(links[pos]);
-	                	break;
-					case 2:
-						links = getResources().getStringArray(R.array.fallscreek_links);
-	                	webview.loadUrl(links[pos]);
-	                	break;
-					case 3:
-						links = getResources().getStringArray(R.array.bawbaw_links);
-	                	webview.loadUrl(links[pos]);
-	                	break;
-					case 4:
-						links = getResources().getStringArray(R.array.perisher_links);
-	                	webview.loadUrl(links[pos]);
-	                	break;
-					case 5:
-						links = getResources().getStringArray(R.array.thredbo_links);
-	                	webview.loadUrl(links[pos]);
-	                	break;
-					case 6:
-						links = getResources().getStringArray(R.array.selwyn_links);
-	                	webview.loadUrl(links[pos]);
-	                	break;
-					case 7:
-						links = getResources().getStringArray(R.array.charlotte_links);
-	                	webview.loadUrl(links[pos]);
-	                	break;
-					case 8:
-						links = getResources().getStringArray(R.array.lakemountain_links);
-	                	webview.loadUrl(links[pos]);
-	                	break;
-	                default:
-	                	webview.loadData("<html><body><b>" + getString(R.string.noresort) + "</b></body></html>", "text/html", "utf-8");
-            	}
+            	webview.loadUrl(links[pos]);
             }
             public void onNothingSelected(AdapterView<?> parent) {
             	webview.loadData("<html><body><b>" + getString(R.string.noresort) + "</b></body></html>", "text/html", "utf-8");
@@ -296,54 +250,63 @@ public class MainPhone extends Activity {
     }
     
     private void load_mtbuller() {
+    	links = getResources().getStringArray(R.array.mtbuller_links);
     	ArrayAdapter<?> adapter = ArrayAdapter.createFromResource(MainPhone.this, R.array.mtbuller, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnCamSelect.setAdapter(adapter);
     }
     
     private void load_mthotham() {
+    	links = getResources().getStringArray(R.array.mthotham_links);
     	ArrayAdapter<?> adapter = ArrayAdapter.createFromResource(this, R.array.mthotham, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnCamSelect.setAdapter(adapter);
     }
     
     private void load_fallscreek() {
+    	links = getResources().getStringArray(R.array.fallscreek_links);
     	ArrayAdapter<?> adapter = ArrayAdapter.createFromResource(this, R.array.fallscreek, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnCamSelect.setAdapter(adapter);
     }
     
     private void load_bawbaw() {
+    	links = getResources().getStringArray(R.array.bawbaw_links);
     	ArrayAdapter<?> adapter = ArrayAdapter.createFromResource(this, R.array.bawbaw, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnCamSelect.setAdapter(adapter);
     }
     
     private void load_perisher(){
+    	links = getResources().getStringArray(R.array.perisher_links);
     	ArrayAdapter<?> adapter = ArrayAdapter.createFromResource(this, R.array.perisher, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnCamSelect.setAdapter(adapter);
     }
     
     private void load_thredbo() {
+    	links = getResources().getStringArray(R.array.thredbo_links);
     	ArrayAdapter<?> adapter = ArrayAdapter.createFromResource(this, R.array.thredbo, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnCamSelect.setAdapter(adapter);
     }
     
     private void load_selwyn() {
+    	links = getResources().getStringArray(R.array.selwyn_links);
     	ArrayAdapter<?> adapter = ArrayAdapter.createFromResource(this, R.array.selwyn, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnCamSelect.setAdapter(adapter);
     }
     
     private void load_charlotte() {
+    	links = getResources().getStringArray(R.array.charlotte_links);
     	ArrayAdapter<?> adapter = ArrayAdapter.createFromResource(this, R.array.charlotte, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnCamSelect.setAdapter(adapter);
     }
     
     private void load_lakemountain() {
+    	links = getResources().getStringArray(R.array.lakemountain_links);
     	ArrayAdapter<?> adapter = ArrayAdapter.createFromResource(this, R.array.lakemountain, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnCamSelect.setAdapter(adapter);
