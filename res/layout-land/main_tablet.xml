@@ -2,7 +2,7 @@
 <!-- 
 /**
  * AusSnowCam: View snowcams from Australia's snow resorts
- * File: main.xml
+ * File: main_tablet.xml
  *
  * @author James Giang
  *
@@ -24,34 +24,31 @@
  -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
-	android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:background="#D8EBF7">
-    <LinearLayout android:id="@+id/header"
-    	android:orientation="vertical"
-    	android:layout_width="fill_parent"
-    	android:layout_height="wrap_content"
-    	android:gravity="center_horizontal">
-    	<com.google.ads.AdView android:id="@+id/adView"
+	android:orientation="horizontal"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+	<LinearLayout
+		android:orientation="vertical"
+		android:layout_width="0px"
+		android:layout_height="match_parent"
+		android:layout_weight="1">
+		<com.google.ads.AdView
+			android:id="@+id/adView"
 			android:layout_width="fill_parent"
 			android:layout_height="wrap_content"
 			ads:adUnitId="a14dee1ce46976e"
 			ads:adSize="BANNER"
 			ads:loadAdOnCreate="true" />
-		<Spinner android:id="@+id/spnCamSelect"
-   			android:layout_width="fill_parent"
-   			android:layout_height="wrap_content"
-   			android:prompt="@string/snowcam_prompt">
-   		</Spinner>
+		<fragment
+			class="com.jamesgiang.aussnowcam.Fragments.CamList"
+			android:id="@+id/camlist"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content" />
 	</LinearLayout>
-   	<LinearLayout android:id="@+id/content"
-   		android:orientation="vertical"
-    	android:layout_width="fill_parent"
-    	android:layout_height="fill_parent">
-	    <WebView android:id="@+id/webview"
-	        android:layout_width="fill_parent"
-	        android:layout_height="fill_parent">
-		</WebView>
-	</LinearLayout>
+	<fragment
+		class="com.jamesgiang.aussnowcam.Fragments.CamViewer"
+		android:id="@+id/camviewer"
+		android:layout_weight="2"
+		android:layout_width="0px"
+		android:layout_height="match_parent" />
 </LinearLayout>

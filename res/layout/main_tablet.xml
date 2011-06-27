@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+/**
+ * AusSnowCam: View snowcams from Australia's snow resorts
+ * File: main_tablet.xml
+ *
+ * @author James Giang
+ *
+ * Copyright 2011 James Giang
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ */
+ -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
+	android:orientation="vertical"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+	<fragment
+		class="com.jamesgiang.aussnowcam.Fragments.CamViewer"
+		android:id="@+id/camviewer"
+		android:layout_weight="2"
+		android:layout_width="match_parent"
+		android:layout_height="0px" />
+	<LinearLayout
+		android:orientation="vertical"
+		android:layout_width="match_parent"
+		android:layout_height="0px"
+		android:layout_weight="1">
+		<com.google.ads.AdView
+			android:id="@+id/adView"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			ads:adUnitId="a14dee1ce46976e"
+			ads:adSize="BANNER"
+			ads:loadAdOnCreate="true" />
+		<fragment
+			class="com.jamesgiang.aussnowcam.Fragments.CamList"
+			android:id="@+id/camlist"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content" />
+	</LinearLayout>
+</LinearLayout>

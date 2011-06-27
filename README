@@ -54,6 +54,17 @@ v2.2.1
 -Fixed issue with Charlotte Pass' webcams not loading due to new URLs
 -Dropped support Android 1.5 in preparation for Honeycomb updates
 
+v3.0
+General
+-Added menu icons
+-Major codebase refactoring
+
+Tablets
+-Optimized layout for tablet devices
+-Supports dual-pane viewing for both portrait and landscape
+-Cam selection now in a list as opposed to a spinner
+-Resort selection now part of the Action Bar
+
 ----------
 LICENSE
 ----------
