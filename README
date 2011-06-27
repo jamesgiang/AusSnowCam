@@ -57,10 +57,13 @@ v2.2.1
 v3.0
 General
 -Added menu icons
--Reworked code-base
+-Major codebase refactoring
 
 Tablets
 -Optimized layout for tablet devices
+-Supports dual-pane viewing for both portrait and landscape
+-Cam selection now in a list as opposed to a spinner
+-Resort selection now part of the Action Bar
 
 ----------
 LICENSE
