@@ -216,6 +216,7 @@ public class MainPhone extends Activity {
 							case 6:
 								Utils.WriteSettings(MainPhone.this, "6", "selected_resort");
 								load_selwyn();
+								break;
 							case 7:
 								Utils.WriteSettings(MainPhone.this, "7", "selected_resort");
 								load_charlotte();
