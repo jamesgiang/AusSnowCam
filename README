@@ -25,6 +25,9 @@ This app is not affiliated with any of the above mentioned snow resorts. All ima
 
 Source code available on GitHub https://github.com/jamesgiang/AusSnowCam
 
+==Please Note==
+If you have issues launching the app after updating to version 3+, please re-install the app to fix
+
 ----------
 VERSION HISTORY (CHANGELOG)
 ----------
@@ -64,6 +67,9 @@ Tablets
 -Supports dual-pane viewing for both portrait and landscape
 -Cam selection now in a list as opposed to a spinner
 -Resort selection now part of the Action Bar
+
+v3.0.1
+-Fixed issue with Charlotte Pass and Lake Mountain incorrectly loading Selwyn cams on phone (Thanks Jason!)
 
 ----------
 LICENSE
