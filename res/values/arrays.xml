@@ -153,12 +153,12 @@
 		<item>http://perisher.com.au/images/snowcams/Xtube.jpg</item>
 	</string-array>
 	<string-array name="thredbo">
-		<item>Basin</item>
-		<item>Mountain</item>
-		<item>Alpine Way</item>
+		<item>The Basin</item>
+		<item>Kosciuszko Walking Track</item>
+		<item>Mid Supertrail</item>
 		<item>Kosciuszko Express</item>
-		<item>Central Spur</item>
-		<item>Cruiser</item>
+		<item>Antons Area</item>
+		<item>Cruiser Area</item>
 		<item>Friday Flat</item>
 	</string-array>
 	<string-array name="thredbo_links">
