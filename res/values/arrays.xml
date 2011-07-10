@@ -51,17 +51,49 @@
 		<item>http://www.mtbuller.com.au/snowcam/img_1.jpg</item>
 	</string-array>
 	<string-array name="mthotham">
-		<item>Snake Gully</item>
-		<item>Big D</item>
-		<item>Hotham Heights</item>
-		<item>Heavenly Valley</item>
+		<item>Snake Gully 1</item>
+		<item>Snake Gully 2</item>
+		<item>Snake Gully 3</item>
+		<item>Snake Gully 4</item>
+		<item>Snake Gully 5</item>
+		<item>Snake Gully 6</item>
+		<item>Big D 1</item>
+		<item>Big D 2</item>
+		<item>Big D 3</item>
+		<item>Hotham Heights 1</item>
+		<item>Hotham Heights 2</item>
+		<item>Hotham Heights 3</item>
+		<item>Hotham Heights 4</item>
+		<item>Hotham Heights 5</item>
+		<item>Heavenly Valley 1</item>
+		<item>Heavenly Valley 2</item>
+		<item>Heavenly Valley 3</item>
+		<item>Heavenly Valley 4</item>
+		<item>Heavenly Valley 5</item>
+		<item>Heavenly Valley 6</item>
 		<item>Dinner Plain</item>
 	</string-array>
 	<string-array name="mthotham_links">
 		<item>http://hotham.ski.com.au/cams/hotham-snakegully1.jpg</item>
+		<item>http://hotham.ski.com.au/cams/hotham-snakegully2.jpg</item>
+		<item>http://hotham.ski.com.au/cams/hotham-snakegully3.jpg</item>
+		<item>http://hotham.ski.com.au/cams/hotham-snakegully4.jpg</item>
+		<item>http://hotham.ski.com.au/cams/hotham-snakegully5.jpg</item>
+		<item>http://hotham.ski.com.au/cams/hotham-snakegully6.jpg</item>
 		<item>http://hotham.ski.com.au/cams/hotham-bigd1.jpg</item>
+		<item>http://hotham.ski.com.au/cams/hotham-bigd2.jpg</item>
+		<item>http://hotham.ski.com.au/cams/hotham-bigd3.jpg</item>
 		<item>http://hotham.ski.com.au/cams/hotham-central1.jpg</item>
+		<item>http://hotham.ski.com.au/cams/hotham-central2.jpg</item>
+		<item>http://hotham.ski.com.au/cams/hotham-central3.jpg</item>
+		<item>http://hotham.ski.com.au/cams/hotham-central4.jpg</item>
+		<item>http://hotham.ski.com.au/cams/hotham-central5.jpg</item>
 		<item>http://hotham.ski.com.au/cams/hotham-heavenly1.jpg</item>
+		<item>http://hotham.ski.com.au/cams/hotham-heavenly2.jpg</item>
+		<item>http://hotham.ski.com.au/cams/hotham-heavenly3.jpg</item>
+		<item>http://hotham.ski.com.au/cams/hotham-heavenly4.jpg</item>
+		<item>http://hotham.ski.com.au/cams/hotham-heavenly5.jpg</item>
+		<item>http://hotham.ski.com.au/cams/hotham-heavenly6.jpg</item>
 		<item>http://hotham.ski.com.au/cams/dinnerplain1.jpg</item>
 	</string-array>
 	<string-array name="fallscreek">
@@ -105,7 +137,7 @@
 		<item>Mt. Perisher</item>
 		<item>Blue Cow</item>
 		<item>Smiggin Holes</item>
-		<item>The Ridge</item>
+		<item>Ridge Quad</item>
 		<item>Guthega</item>
 		<item>Tube Town</item>
 	</string-array>
@@ -121,12 +153,12 @@
 		<item>http://perisher.com.au/images/snowcams/Xtube.jpg</item>
 	</string-array>
 	<string-array name="thredbo">
-		<item>Basin</item>
-		<item>Mountain</item>
-		<item>Alpine Way</item>
+		<item>The Basin</item>
+		<item>Kosciuszko Walking Track</item>
+		<item>Mid Supertrail</item>
 		<item>Kosciuszko Express</item>
-		<item>Central Spur</item>
-		<item>Cruiser</item>
+		<item>Antons Area</item>
+		<item>Cruiser Area</item>
 		<item>Friday Flat</item>
 	</string-array>
 	<string-array name="thredbo_links">
