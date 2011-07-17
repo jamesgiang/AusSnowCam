@@ -25,8 +25,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
 	android:orientation="horizontal"
-	android:layout_width="match_parent"
-	android:layout_height="match_parent">
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent">
 	<LinearLayout
 		android:orientation="vertical"
 		android:layout_width="0px"
@@ -39,11 +39,55 @@
 			ads:adUnitId="a14dee1ce46976e"
 			ads:adSize="BANNER"
 			ads:loadAdOnCreate="true" />
-		<fragment
-			class="com.jamesgiang.aussnowcam.Fragments.CamList"
-			android:id="@+id/camlist"
+		<LinearLayout
+			android:orientation="vertical"
 			android:layout_width="fill_parent"
-			android:layout_height="wrap_content" />
+			android:layout_height="fill_parent">
+			<fragment
+				class="com.jamesgiang.aussnowcam.Fragments.CamList"
+				android:id="@+id/camlist"
+				android:layout_width="fill_parent"
+				android:layout_height="0px" 
+				android:layout_weight="2" />
+			<LinearLayout 
+				android:orientation="vertical"
+				android:layout_width="fill_parent"
+				android:layout_height="0px"
+				android:layout_weight="1"
+				android:gravity="center">
+				<TextView
+					android:id="@+id/weatherTitle"
+					android:textStyle="bold"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content" />
+				<TextView
+					android:id="@+id/data1"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content" />
+				<TextView
+					android:id="@+id/data2"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content" />
+				<TextView
+					android:id="@+id/data3"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content" />
+				<TextView
+					android:id="@+id/data4"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content" />
+				<TextView
+					android:id="@+id/data5"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content" />
+				<TextView
+					android:id="@+id/data6"
+					android:textStyle="italic"
+					android:layout_marginTop="15px"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content" />
+			</LinearLayout>
+		</LinearLayout>
 	</LinearLayout>
 	<fragment
 		class="com.jamesgiang.aussnowcam.Fragments.CamViewer"

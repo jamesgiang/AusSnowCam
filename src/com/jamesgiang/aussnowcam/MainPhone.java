@@ -55,6 +55,7 @@ public class MainPhone extends Activity {
 	private GoogleAnalyticsTracker tracker;
 	private String[] resorts;
 	private String[] links;
+	
 	@Override
 	public void onConfigurationChanged (Configuration newConfig) {
 		super.onConfigurationChanged(newConfig);

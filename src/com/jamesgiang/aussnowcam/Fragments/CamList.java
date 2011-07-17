@@ -22,13 +22,19 @@
 
 package com.jamesgiang.aussnowcam.Fragments;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import com.jamesgiang.aussnowcam.R;
+import com.jamesgiang.aussnowcam.Utils;
 
 import android.app.ListFragment;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class CamList extends ListFragment {
 
@@ -88,6 +94,11 @@ public class CamList extends ListFragment {
         }
     }
     public void refreshList(int resort) {
+    	try {
+			Utils.getWeather(getActivity(), resort);
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
     	switch(resort) {
     	case 0:
     		setListAdapter(new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_activated_1, getResources().getStringArray(R.array.mtbuller)));
@@ -119,4 +130,6 @@ public class CamList extends ListFragment {
     	}
     	showCam(0);
     }
+    
+    
 }
