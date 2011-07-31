@@ -55,6 +55,7 @@ public class MainPhone extends Activity {
 	private GoogleAnalyticsTracker tracker;
 	private String[] resorts;
 	private String[] links;
+	
 	@Override
 	public void onConfigurationChanged (Configuration newConfig) {
 		super.onConfigurationChanged(newConfig);
@@ -128,6 +129,8 @@ public class MainPhone extends Activity {
         		}
 			} catch (IOException e) {
 				Toast.makeText(getApplicationContext(), "Please select a resort first", Toast.LENGTH_SHORT).show();
+			} catch (NumberFormatException e) {
+				e.printStackTrace();
 			}
         } else {
         	try {
@@ -244,6 +247,16 @@ public class MainPhone extends Activity {
 	        case R.id.menu3:
 	        	tracker.trackEvent("Menu", "About", "", 0);
 	        	Utils.About(this);
+	        	return true;
+	        case R.id.menu4:
+	        	tracker.trackEvent("Menu", "Weather", "", 0);
+				try {
+					Utils.toastWeather(getApplicationContext(), Integer.parseInt(Utils.ReadSettings(MainPhone.this, "selected_resort")));
+				} catch (NumberFormatException e) {
+					e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 	        	return true;
     	}
         return false;
