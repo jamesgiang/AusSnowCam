@@ -3,7 +3,7 @@ WHAT IS AUSSNOWCAM?
 ----------
 Craving some snow?
 
-See what's happening at snow resorts across Australia from your phone with ease!
+See what's happening at snow resorts across Australia from your phone/tablet with ease!
 AusSnowCam provides you with a simple interface to quickly browse snow cams of various snow resorts in Australia.
 
 Currently supports the following resorts
@@ -22,6 +22,10 @@ New South Wales
 -Charlotte Pass
 
 This app is not affiliated with any of the above mentioned snow resorts. All images are copyright to their respective owners.
+
+Weather Data:
+Copyright Commonwealth of Australia 2011, Bureau of Meteorology.
+For more information see: http://www.bom.gov.au/other/copyright.shtml
 
 Source code available on GitHub https://github.com/jamesgiang/AusSnowCam
 
@@ -74,6 +78,9 @@ v3.0.1
 v3.1
 -Added all cams for Hotham
 -Fixed up cam names for Thredbo and Perisher
+
+v3.2
+-Added weather support
 
 ----------
 LICENSE
