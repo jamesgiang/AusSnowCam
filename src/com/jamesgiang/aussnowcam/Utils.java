@@ -126,6 +126,7 @@ public class Utils {
 		}
 		return result; 
 	}
+	
 	public static void toastWeather(final Context c, int i) {
 		String end_point = getEndPoint(i);
 		if(end_point != null) {
