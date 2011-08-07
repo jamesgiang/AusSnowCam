@@ -39,4 +39,8 @@
 		android:id="@+id/menu4"
 		android:title="@string/phone_menu4"
 		android:icon="@drawable/ic_menu_info" />
+	<item
+		android:id="@+id/menu5"
+		android:title="@string/phone_menu5"
+		android:icon="@drawable/ic_menu_donate" />
 </menu>

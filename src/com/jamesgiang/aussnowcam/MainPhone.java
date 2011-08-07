@@ -30,7 +30,9 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.res.Configuration;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -271,6 +273,11 @@ public class MainPhone extends Activity {
 	        case R.id.menu4:
 	        	tracker.trackEvent("Menu", "About", "", 0);
 	        	Utils.About(this);
+	        	return true;
+	        case R.id.menu5:
+	        	tracker.trackEvent("Menu", "Donate", "", 0);
+	        	Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=com.jamesgiang.aussnowcampro"));
+	        	startActivity(i);
 	        	return true;
     	}
         return false;
