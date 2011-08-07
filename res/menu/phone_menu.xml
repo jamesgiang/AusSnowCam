@@ -34,9 +34,9 @@
 	<item
 		android:id="@+id/menu3"
 		android:title="@string/phone_menu3"
-		android:icon="@drawable/ic_menu_info" />
+		android:icon="@drawable/ic_menu_weather" />
 	<item
 		android:id="@+id/menu4"
 		android:title="@string/phone_menu4"
-		android:icon="@drawable/ic_menu_weather" />
+		android:icon="@drawable/ic_menu_info" />
 </menu>

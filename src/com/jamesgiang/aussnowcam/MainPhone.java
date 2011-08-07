@@ -259,10 +259,6 @@ public class MainPhone extends Activity {
 	        	webview.reload();
 	        	return true;
 	        case R.id.menu3:
-	        	tracker.trackEvent("Menu", "About", "", 0);
-	        	Utils.About(this);
-	        	return true;
-	        case R.id.menu4:
 	        	tracker.trackEvent("Menu", "Weather", "", 0);
 				try {
 					Utils.toastWeather(getApplicationContext(), Integer.parseInt(Utils.ReadSettings(MainPhone.this, "selected_resort")));
@@ -271,6 +267,10 @@ public class MainPhone extends Activity {
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
+	        	return true;
+	        case R.id.menu4:
+	        	tracker.trackEvent("Menu", "About", "", 0);
+	        	Utils.About(this);
 	        	return true;
     	}
         return false;
