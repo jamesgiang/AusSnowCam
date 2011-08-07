@@ -126,6 +126,12 @@ public class MainPhone extends Activity {
 	        		case 8:
 	        			load_lakemountain();
 	        			break;
+	        		case 9:
+						load_benlomond();
+						break;
+					case 10:
+						load_mtmawson();
+						break;
         		}
 			} catch (IOException e) {
 				Toast.makeText(getApplicationContext(), "Please select a resort first", Toast.LENGTH_SHORT).show();
@@ -228,6 +234,14 @@ public class MainPhone extends Activity {
 								Utils.WriteSettings(MainPhone.this, "8", "selected_resort");
 								load_lakemountain();
 								break;
+							case 9:
+								Utils.WriteSettings(MainPhone.this, "9", "selected_resort");
+								load_benlomond();
+								break;
+							case 10:
+								Utils.WriteSettings(MainPhone.this, "10", "selected_resort");
+								load_mtmawson();
+								break;
 							}
 						} catch (IOException e) {
 							e.printStackTrace();
@@ -321,6 +335,18 @@ public class MainPhone extends Activity {
     private void load_lakemountain() {
     	links = getResources().getStringArray(R.array.lakemountain_links);
     	ArrayAdapter<?> adapter = ArrayAdapter.createFromResource(this, R.array.lakemountain, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spnCamSelect.setAdapter(adapter);
+    }
+    private void load_benlomond() {
+    	links = getResources().getStringArray(R.array.benlomond_links);
+    	ArrayAdapter<?> adapter = ArrayAdapter.createFromResource(this, R.array.benlomond, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spnCamSelect.setAdapter(adapter);
+    }
+    private void load_mtmawson() {
+    	links = getResources().getStringArray(R.array.mtmawson_links);
+    	ArrayAdapter<?> adapter = ArrayAdapter.createFromResource(this, R.array.mtmawson, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnCamSelect.setAdapter(adapter);
     }

@@ -123,6 +123,12 @@ public class Utils {
 		case 8:
 			result = null;
 			break;
+		case 9:
+			result = null;
+			break;
+		case 10:
+			result = null;
+			break;
 		}
 		return result; 
 	}
