@@ -86,6 +86,14 @@ public class CamList extends ListFragment {
 	        	links = getResources().getStringArray(R.array.lakemountain_links);
 	        	fragment.loadCam(links[index]);
 	        	break;
+	        case 9:
+	        	links = getResources().getStringArray(R.array.benlomond_links);
+	        	fragment.loadCam(links[index]);
+	        	break;
+	        case 10:
+	        	links = getResources().getStringArray(R.array.mtmawson_links);
+	        	fragment.loadCam(links[index]);
+	        	break;
         }
     }
     public void refreshList(int resort) {
@@ -117,6 +125,12 @@ public class CamList extends ListFragment {
     		break;
     	case 8:
     		setListAdapter(new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_activated_1, getResources().getStringArray(R.array.lakemountain)));
+    		break;
+    	case 9:
+    		setListAdapter(new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_activated_1, getResources().getStringArray(R.array.benlomond)));
+    		break;
+    	case 10:
+    		setListAdapter(new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_activated_1, getResources().getStringArray(R.array.mtmawson)));
     		break;
     	}
     	showCam(0);
