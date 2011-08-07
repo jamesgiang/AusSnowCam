@@ -26,11 +26,16 @@
 	<item
 		android:id="@+id/menu1"
 		android:title="@string/honeycomb_menu1"
-		android:icon="@drawable/ic_menu_refresh"
+		android:icon="@drawable/ic_menu_donate"
 		android:showAsAction="ifRoom" />
 	<item
 		android:id="@+id/menu2"
 		android:title="@string/honeycomb_menu2"
+		android:icon="@drawable/ic_menu_refresh"
+		android:showAsAction="ifRoom" />
+	<item
+		android:id="@+id/menu3"
+		android:title="@string/honeycomb_menu3"
 		android:icon="@drawable/ic_menu_info"
 		android:showAsAction="ifRoom" />
 </menu>

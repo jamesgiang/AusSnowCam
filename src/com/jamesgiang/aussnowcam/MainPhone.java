@@ -30,7 +30,9 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.res.Configuration;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -126,6 +128,12 @@ public class MainPhone extends Activity {
 	        		case 8:
 	        			load_lakemountain();
 	        			break;
+	        		case 9:
+						load_benlomond();
+						break;
+					case 10:
+						load_mtmawson();
+						break;
         		}
 			} catch (IOException e) {
 				Toast.makeText(getApplicationContext(), "Please select a resort first", Toast.LENGTH_SHORT).show();
@@ -228,6 +236,14 @@ public class MainPhone extends Activity {
 								Utils.WriteSettings(MainPhone.this, "8", "selected_resort");
 								load_lakemountain();
 								break;
+							case 9:
+								Utils.WriteSettings(MainPhone.this, "9", "selected_resort");
+								load_benlomond();
+								break;
+							case 10:
+								Utils.WriteSettings(MainPhone.this, "10", "selected_resort");
+								load_mtmawson();
+								break;
 							}
 						} catch (IOException e) {
 							e.printStackTrace();
@@ -245,10 +261,6 @@ public class MainPhone extends Activity {
 	        	webview.reload();
 	        	return true;
 	        case R.id.menu3:
-	        	tracker.trackEvent("Menu", "About", "", 0);
-	        	Utils.About(this);
-	        	return true;
-	        case R.id.menu4:
 	        	tracker.trackEvent("Menu", "Weather", "", 0);
 				try {
 					Utils.toastWeather(getApplicationContext(), Integer.parseInt(Utils.ReadSettings(MainPhone.this, "selected_resort")));
@@ -257,6 +269,15 @@ public class MainPhone extends Activity {
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
+	        	return true;
+	        case R.id.menu4:
+	        	tracker.trackEvent("Menu", "About", "", 0);
+	        	Utils.About(this);
+	        	return true;
+	        case R.id.menu5:
+	        	tracker.trackEvent("Menu", "Donate", "", 0);
+	        	Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=com.jamesgiang.aussnowcampro"));
+	        	startActivity(i);
 	        	return true;
     	}
         return false;
@@ -321,6 +342,18 @@ public class MainPhone extends Activity {
     private void load_lakemountain() {
     	links = getResources().getStringArray(R.array.lakemountain_links);
     	ArrayAdapter<?> adapter = ArrayAdapter.createFromResource(this, R.array.lakemountain, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spnCamSelect.setAdapter(adapter);
+    }
+    private void load_benlomond() {
+    	links = getResources().getStringArray(R.array.benlomond_links);
+    	ArrayAdapter<?> adapter = ArrayAdapter.createFromResource(this, R.array.benlomond, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spnCamSelect.setAdapter(adapter);
+    }
+    private void load_mtmawson() {
+    	links = getResources().getStringArray(R.array.mtmawson_links);
+    	ArrayAdapter<?> adapter = ArrayAdapter.createFromResource(this, R.array.mtmawson, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnCamSelect.setAdapter(adapter);
     }

@@ -34,6 +34,8 @@ import com.jamesgiang.aussnowcam.Fragments.CamViewer;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.ActionBar.OnNavigationListener;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -102,11 +104,16 @@ public class MainTablet extends Activity {
 	public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
 	        case R.id.menu1:
+	        	tracker.trackEvent("Menu", "Donate", "", 0);
+	        	Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=com.jamesgiang.aussnowcampro"));
+	        	startActivity(i);
+	        	return true;
+	        case R.id.menu2:
 	        	tracker.trackEvent("Menu", "Reload", "", 0);
 	        	CamViewer fragment = (CamViewer) getFragmentManager().findFragmentById(R.id.camviewer);
 	        	fragment.refresh();
 	        	return true;
-	        case R.id.menu2:
+	        case R.id.menu3:
 	        	tracker.trackEvent("Menu", "About", "", 0);
 	        	Utils.About(this);
 	        	return true;

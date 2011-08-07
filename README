@@ -1,10 +1,14 @@
 ----------
 WHAT IS AUSSNOWCAM?
 ----------
+***FREE VERSION***
+
 Craving some snow?
 
 See what's happening at snow resorts across Australia from your phone/tablet with ease!
 AusSnowCam provides you with a simple interface to quickly browse snow cams of various snow resorts in Australia.
+
+To show your support for the app and sponsor the developer's coffee fund - please purchase the donate version of the app on the market.
 
 Currently supports the following resorts
 
@@ -21,6 +25,10 @@ New South Wales
 -Selwyn Snowfields
 -Charlotte Pass
 
+Tasmania
+-Ben Lomond
+-Mt Mawson
+
 This app is not affiliated with any of the above mentioned snow resorts. All images are copyright to their respective owners.
 
 Weather Data:
@@ -35,31 +43,23 @@ If you have issues launching the app after updating to version 3+, please re-ins
 ----------
 VERSION HISTORY (CHANGELOG)
 ----------
-v1.0
--Initial release
--Supports Mt Buller, Mt Hotham and Falls Creek
 
-v1.1
--Added Small screen support
+v3.3
+-Added Tasmanian snowfields (Ben Lomond and Mt Mawson)
+-Added donation support on free app
+-Released donate version of app (no ads)
+-Added Honeycomb 3.2 support
+-Readjusted menu layout
 
-v2.0
--Added support for Mt Baw Baw, Thredbo and Perisher
--AusSnowCam now licensed under Apache License Version 2.0
+v3.2
+-Added weather support
 
-v2.1
--Added support for Selwyn Snowfields and Charlotte Pass
--Added Google Analytics tracking
--Fixed up ad loading issue
--Retweaked codebase
+v3.1
+-Added all cams for Hotham
+-Fixed up cam names for Thredbo and Perisher
 
-v2.2
--Added support for "Little Buller Spur" cam for Mt Buller
--Added support for Lake Mountain
--Fixed ad & spinner alignment
-
-v2.2.1
--Fixed issue with Charlotte Pass' webcams not loading due to new URLs
--Dropped support Android 1.5 in preparation for Honeycomb updates
+v3.0.1
+-Fixed issue with Charlotte Pass and Lake Mountain incorrectly loading Selwyn cams on phone (Thanks Jason!)
 
 v3.0
 General
@@ -72,15 +72,32 @@ Tablets
 -Cam selection now in a list as opposed to a spinner
 -Resort selection now part of the Action Bar
 
-v3.0.1
--Fixed issue with Charlotte Pass and Lake Mountain incorrectly loading Selwyn cams on phone (Thanks Jason!)
+v2.2.1
+-Fixed issue with Charlotte Pass' webcams not loading due to new URLs
+-Dropped support Android 1.5 in preparation for Honeycomb updates
 
-v3.1
--Added all cams for Hotham
--Fixed up cam names for Thredbo and Perisher
+v2.2
+-Added support for "Little Buller Spur" cam for Mt Buller
+-Added support for Lake Mountain
+-Fixed ad & spinner alignment
 
-v3.2
--Added weather support
+v2.1
+-Added support for Selwyn Snowfields and Charlotte Pass
+-Added Google Analytics tracking
+-Fixed up ad loading issue
+-Retweaked codebase
+
+v2.0
+-Added support for Mt Baw Baw, Thredbo and Perisher
+-AusSnowCam now licensed under Apache License Version 2.0
+
+v1.1
+-Added Small screen support
+
+v1.0
+-Initial release
+-Supports Mt Buller, Mt Hotham and Falls Creek
+
 
 ----------
 LICENSE

@@ -23,13 +23,15 @@
  */
  -->
 <resources>
-	<string name="app_name">AusSnowCam</string>
+	<string name="app_name">AusSnowCam (Free)</string>
 	<string name="phone_menu1">Set Resort</string>
 	<string name="phone_menu2">Refresh</string>
-	<string name="phone_menu3">About</string>
-	<string name="phone_menu4">Weather</string>
-	<string name="honeycomb_menu1">Refresh</string>
-	<string name="honeycomb_menu2">About</string>
+	<string name="phone_menu3">Weather</string>
+	<string name="phone_menu4">About</string>
+	<string name="phone_menu5">Donate</string>
+	<string name="honeycomb_menu1">Donate</string>
+	<string name="honeycomb_menu2">Refresh</string>
+	<string name="honeycomb_menu3">About</string>
 	<string name="close">Close</string>
 	<string name="loading">Loading snowcam...</string>
 	<string name="snowcam_prompt">Select a snowcam</string>

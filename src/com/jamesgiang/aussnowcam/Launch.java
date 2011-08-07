@@ -30,7 +30,7 @@ public class Launch extends Activity {
 	@Override
     public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		if(android.os.Build.VERSION.SDK_INT == 11 || android.os.Build.VERSION.SDK_INT == 12  ) {
+		if(android.os.Build.VERSION.SDK_INT >= 11) {
 			Intent i = new Intent();
 			i.setClassName("com.jamesgiang.aussnowcam", "com.jamesgiang.aussnowcam.MainTablet");
 			startActivity(i);
